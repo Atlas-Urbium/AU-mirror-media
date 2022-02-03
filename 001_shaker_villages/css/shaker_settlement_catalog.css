@@ -1,0 +1,59 @@
+html {
+  font-size: 2vw;
+}
+
+body {
+  font-family: 'Helvetica', serif;
+  padding: 0;
+  margin: 0;
+}
+
+.infoHeader {
+  margin-bottom: .25em;
+  font-weight: bold;
+}
+
+.info {
+  margin-top: 0em;
+}
+#imageFrame {
+  width: 100vw;
+  height: 100vw;
+  overflow: hidden;
+}
+
+.main_image {
+  width: 100%;
+  opacity: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#infoFrame {
+  width: 40vw;
+  position: absolute;
+  top: 28vw;
+  left: 55vw;
+  height: 67vw;
+  overflow: hidden;
+  opacity: 0;
+}
+
+.graph {
+  display: inline-block;
+}
+
+.graphBottom {
+  stroke:rgb(255,255,255);
+  stroke-width:1;
+}
+
+.city:hover {
+  background-color: #F53920;
+}
+
+.info_layover {
+  position:absolute;
+
+}

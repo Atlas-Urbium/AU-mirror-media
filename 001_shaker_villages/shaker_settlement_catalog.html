@@ -1,0 +1,49 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Shaker Settlement Catalog</title>
+  <meta name="description" content="A graphic catalog of shaker settlements" />
+  <meta http-equiv="author" content="Blue Jo" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="./css/shaker_settlement_catalog.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+  <div id="imageFrame">
+    <svg id="imageFrameSVG" width="100%" height="100%">
+      <image xlink:href='./img/shaker_basemap.svg' height='100%' width='100%' x='0' y='0'></image>
+    </svg>
+  </div>
+  <div id="infoFrame">
+    <h2 id="cityName"></h2>
+    <p class="infoHeader">DATES ACTIVE</p>
+    <p class="info" id="datesActive"></p>
+    <p class="infoHeader">BISHOPRIC</p>
+    <p class="info" id="bishopric"></p>
+    <p class="infoHeader">FAMILIES</p>
+    <svg class="graph" id="families" width="95%" height="3%">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:rgb(186,60,15);stop-opacity:.25" />
+          <stop offset="100%" style="stop-color:rgb(186,60,15);stop-opacity:.5" />
+        </linearGradient>
+      </defs>
+    </svg>
+    <p class="infoHeader">TOTAL MEMBERSHIP</p>
+    <svg class="graph" width="95%" height="3%">
+      <rect class="graphBar" id="totalMembershipBar" x="0" y=".5%" width="0%" height=80% rx="1%" style="fill:url(#grad1);stroke-width:0;"/>
+      <text id="totalMembershipNum" x="2%" y="80%" style="fill:black;"></text>
+    </svg>
+    <p class="infoHeader">LAND HOLDINGS (ACRES)</p>
+    <svg class="graph" width="95%" height="3%">
+      <rect class="graphBar" id="landHoldingsBar" x="0" y=".5%" width="0%" height=80% rx="1%" style="fill:url(#grad1);stroke-width:0;"/>
+      <text id="landHoldingsNum" x="2%" y="80%" style="fill:black;"></text>
+    </svg>
+    <p class="infoHeader">DESCRIPTION</p>
+    <p class="info" id="description"></p>
+  </div>
+</svg>
+  <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+  <script src="./js/shaker_settlement_catalog.js"></script>
+</body>
+</html>
