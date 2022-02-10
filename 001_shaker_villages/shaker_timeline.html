@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Shaker Timeline</title>
+  <meta name="description" content="A timeline of Shaker population and events" />
+  <meta http-equiv="author" content="Blue Jo" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="../css/mirror_media.css" type="text/css" rel="stylesheet" />
+  <link href="./css/shaker_timeline.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+  <div class="grid-container medium-block">
+    <div id="state-maps">
+      <svg width="100%" height="100%">
+        <image xlink:href='./img/state_maps.svg' height='100%' width='100%' x='0' y='0'></image>
+        <!--- numbers --->
+        <text class="graphic-text" x="24%" y="26%">1.</text>
+        <text class="graphic-text" x="24%" y="58%">2.</text>
+        <!--- scale --->
+        <text class="graphic-text" x="78.5%" y="92.4%">POPULATION</text>
+        <text class="graphic-text" x="60.5%" y="98.3%">25</text>
+        <text class="graphic-text" x="64.5%" y="97.2%">100</text>
+        <text class="graphic-text" x="70.25%" y="96.4%">200</text>
+        <text class="graphic-text" x="81.75%" y="95.25%">400</text>
+        <text class="graphic-text" x="92.9%" y="94.35%">600</text>
+      </svg>
+  </div>
+  <div id="state-key">
+    <p id="states-label" class="graphic-text">STATES<br> </p>
+    <p id="states-list" class="graphic-text">
+      1. NEW YORK, VERMONT, NEW HAMPSHIRE,<br>
+      MAINE, MASSACHUSETTS, RHODE ISLAND,<br>
+      AND CONNECTICUT<br>
+      2. INDIANA, OHIO, AND KENTUCKY</p>
+  </div>
+  <div id="block-header"><h2>SHAKER TIMELINE</h2></div>
+  <div id="sidebar-timeline">
+    <svg width="100%" height="200%">
+      <text class="timeline-date" x="0%" y="1rem">1740</text>
+      <text class="timeline-date" x="0%" y="11rem">1750</text>
+    </svg>
+  </div>
+  <div id="play-button" class="button">
+    <svg width="100%" height="100%" class="button">
+      <circle/>
+      <text x="50%" y="50%">PLAY</text>
+    </svg>
+  </div>
+  <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" src="../js/jquery-csv.min.js"></script>
+  <script src="./js/shaker_village_catalog.js"></script>
+</body>
+</html>

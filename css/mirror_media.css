@@ -1,0 +1,135 @@
+/* Mirror Media CSS
+
+   This stylesheet contains the text and grid styles that align Atlas Urbium's
+   graphics with the styles on mirror.xyz */
+
+/* text
+   padding and margin are set for baseline text alignment
+ */
+
+html {
+  font-size: 14.4px;
+  color: #efefef;
+}
+
+h1 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 3.36rem;
+  line-height: 4rem;
+  margin: 0 0 -2.75rem 0;
+  padding: 2.75rem 0 0 0;
+}
+
+h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 2.07rem;
+  line-height: 2rem;
+  margin: 0 0 -0.22rem 0;
+  padding: 0.22rem 0 0 0;
+}
+
+h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1.51rem;
+  line-height: 2rem;
+  margin: 0 0 -0.45rem 0;
+  padding: 0.45rem 0 0 0;
+}
+
+h4 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 1.23rem;
+  line-height: 2rem;
+  margin: 0 0 -0.57rem 0;
+  padding: 0.57rem 0 0 0;
+}
+
+h5 {
+  font-family: "Inconsolata", monospace;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 2rem;
+  margin: 0 0 -0.66rem 0;
+  padding: 0.66rem 0 0 0;
+}
+
+p {
+  font-family: "Inconsolata", monospace;
+  font-weight: 300;
+  font-size: 1.23rem;
+  line-height: 2rem;
+  margin: 0 0 -0.49rem 0;
+  padding: 0.49rem 0 0 0;
+}
+
+p.graphic-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+p.tiny-text {
+  font-family: "Inconsolata", monospace;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  margin: 0 0 -0.1989rem 0;
+  padding: 0.1989rem 0 0 0;
+}
+
+/* grid */
+
+.grid-container {
+  display: grid;
+  grid-gap: 2rem;
+  justify-content: center;
+  align-content: center;
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
+.grid-container.large-block {
+  grid-template-columns: 1.75rem 6rem 6rem 6rem 6rem 6rem
+                         6rem 6rem 6rem 6rem 6rem 1.75rem;
+}
+
+.grid-container.medium-block {
+  grid-template-columns: 0.8rem 6rem 6rem 6rem 6rem
+                         6rem 6rem 6rem 6rem 0.8rem;
+}
+
+.grid-container.small-block {
+  grid-template-columns: 6rem 6rem 6rem
+                         6rem 6rem 6rem;
+}
+
+/* buttons */
+
+.button {
+  cursor: pointer;
+}
+
+.button circle {
+  cx: 3rem;
+  cy: 3rem;
+  r: 2.9rem;
+  stroke: #EFEFEF;
+  stroke-width: 0.2rem;
+  fill: #282828;
+}
+
+.button text {
+  fill: #EFEFEF;
+  font-size: 1.23rem;
+  font-family: "Inter";
+  font-weight: 600;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+  <title>Shaker Settlement Catalog</title>
+  <meta name='description' content='A graphic catalog of shaker settlements' />
+  <meta http-equiv='author' content='Blue Jo' />
+  <meta charset='utf-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='preconnect' href='https://fonts.googleapis.com'>
+  <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+  <link href='https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;700&family=Inter:wght@400;600&display=swap' rel='stylesheet'>
+  <link href='../css/mirror_media.css' type='text/css' rel='stylesheet' />
+  <link href='./css/shaker_village_catalog.css' type='text/css' rel='stylesheet' />
+</head>
+<body>
+  <div class='grid-container large-block'>
+    <div id='us-coast-map-container'>
+      <svg id='us-coast-map' width='100%' height='100%'>
+        <image xlink:href='./img/us_coast_map.svg' height='100%' width='100%' x='0' y='0'></image>
+      </svg>
+    </div>
+    <div id='block-header'>
+      <h2>SHAKER VILLAGE CATALOG</h2>
+    </div>
+    <div id='sidebar-header'>
+      <h4 id='village_name'>02.<br>MOUNT LEBANON<br>NEW YORK</h4>
+    </div>
+    <div id='sidebar-content'>
+      <h5>DATES:</h5>
+      <p id='dates'>1770-1950</p>
+      <h5>BISHOPRIC:</h5>
+      <p id='bishopric'>Mount Lebanon</p>
+      <h5>FAMILIES:</h5>
+      <p id='families'>8</p>
+      <h5>TOTAL MEMBERSHIP:</h5>
+      <p id='membership'>6521</p>
+      <h5>LAND HOLDINGS (ACRES):</h5>
+      <p id='landHoldings'>4350</p>
+      <h5>DESCRIPTION:</h5>
+      <p id='description'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Facilisi etiam dignissim diam quis enim lobortis scelerisque. Lacus luctus accumsan tortor posuere ac ut consequat. Eget nulla facilisi etiam dignissim diam quis enim lobortis scelerisque. Nunc eget lorem dolor sed viverra ipsum nunc. Elit eget gravida cum sociis natoque penatibus. Tellus molestie nunc non blandit massa enim. Ipsum consequat nisl vel pretium lectus quam id. Dui faucibus in ornare quam. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant. A cras semper auctor neque vitae tempus.</p>
+    </div>
+    <div id='prev-button-container' class='button-container'>
+      <svg width='100%' height='100%' id='prev-button' class='button'>
+          <circle />
+          <text x='50%' y='50%'>PREV</text>
+      </svg>
+    </div>
+    <div id='next-button-container' class='button-container'>
+      <svg width='100%' height='100%' id='next-button' class='button'>
+        <circle />
+        <text x='50%' y='50%'>NEXT</text>
+      </svg>
+    </div>
+  </div>
+  <script type='text/javascript' src='../js/jquery-3.6.0.min.js'></script>
+  <script type='text/javascript' src='../js/jquery-csv.min.js'></script>
+  <script type='text/javascript' src='../js/mirror_media.js'></script>
+  <script type='text/javascript' src='./js/shaker_village_catalog.js'></script>
+</body>
+</html>
