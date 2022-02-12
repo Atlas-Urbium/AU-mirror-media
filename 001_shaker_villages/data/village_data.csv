@@ -8,16 +8,16 @@ id,name,state,yearFounded,yearDissolved,bishopric,numFamilies,numMembers,landHol
 7,Alfred,Maine,1793,1932,Alfred,3,241,1100,80.86,22.64,i
 8,New Enfield,New Hampshire,1793,1923,Canterbury,3,511,3000,75.2,22.2,am
 9,Harvard,Massachusetts,1793,1918,Harvard,4,497,1800,78.63,28.26,descriptopn
-10,Shirley,Massachusetts,1793,1908,Harvard,3,372,2000,77.32,28.02,*desctipoin
+10,Shirley,Massachusetts,1793,1908,Harvard,3,372,2000,77,28.02,*desctipoin
 11,Sabbathday Lake,Maine,1794,,Alfred,3,202,2000,83.13,17.54,*description
 12,Union Village,Ohio,1806,1912,Union Village,6,3873,4500,30.41,42.45,this
-13,New Watervliet,Ohio,1806,1910,Union Village,2,127,1300,29.2,43.97,is 
+13,New Watervliet,Ohio,1806,1910,Union Village,2,127,1300,29.2,43.97,is
 14,Pleasant Hill,Kentucky,1809,1910,Union Village,5,494,4200,26.77,49.63,anoth
 15,South Union,Kentucky,1810,1922,Union Village,4,676,6000,18.59,54.63,*another
 16,West Union,Indiana,1811,1827,Union Village,2,300,1300,14.77,47.31,test
 17,North Union,Ohio,1822,1889,Union Village,3,407,1355,39.09,36.04,description
 18,Whitewater,Ohio,1825,1907,Union Village,3,491,1500,26.36,45.03,description 2
 19,Groveland,New York,1836,1895,Mount Lebanon,2,793,2280,52.87,29.91,description
-20,Philadelphia,Pennsylvania,1858,1896,Mount Lebanon,1,20,0,65.17,39.54,lorem ipsum
-21,Narcoossee,Florida,1894,1916,Mount Lebanon,1,8,7000,45.6,85.18,hi
+20,Philadelphia,Pennsylvania,1858,1896,Mount Lebanon,1,20,0,64.9,39.4,lorem ipsum
+21,Narcoossee,Florida,1894,1916,Mount Lebanon,1,8,7000,44.6,86.18,hi
 22,White Oak,Georgia,1898,1902,Union Village,1,10,10500,41.8,74.65,oh helo

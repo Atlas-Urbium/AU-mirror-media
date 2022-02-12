@@ -40,10 +40,34 @@ html {
   fill: #EFEFEF;
 }
 
+.cityCircle {
+  r: 0.4rem;
+  stroke-width: 0.05rem;
+  stroke: #EFEFEF;
+  fill: #282828;
+}
+
+.capitalStar {
+  fill: #EFEFEF;
+}
+
 .cityHighlight {
   r: 0.25rem;
-  opacity: 0.25;
+  opacity: .25;
   stroke-width: 0;
+}
+
+.cityButton {
+  r: 0.6rem;
+  opacity: 0;
+}
+
+.mountLebanon {
+  r: 0.5rem;
+}
+
+.bishopricSeat {
+  r: 0.35rem;
 }
 
 .line {
@@ -51,12 +75,62 @@ html {
   stroke-width: 0.05rem;
   stroke-dasharray: 0.5rem, 0.25rem;
   animation: dash 5s linear forwards infinite;
-  opacity: .5;
-  transition: opacity 0.5s ease;
+  opacity: .65;
+  transition: stroke-opacity 1s;
 }
 
 .line.hidden {
-  opacity: 0;
+  stroke-opacity: 0;
+}
+
+.textContainer {
+  margin: 0 0 -0.49rem 0;
+  padding: 0.49rem 0 0 0;
+  height: 2rem;
+}
+
+.barContainer {
+  display: inline-block;
+  padding: 0;
+  margin: 0 .25rem 0 0;
+  width: 0;
+  height: 0.9rem;
+  overflow: hidden;
+  transition: width 0.5s;
+}
+
+.bar {
+  fill: #EFEFEF;
+}
+
+.familyDots {
+  width: 200px;
+}
+
+.dot {
+  fill: #EFEFEF;
+  r: .25rem;
+}
+
+#bishopricKey {
+  width: 0.9rem;
+  position: relative;
+  top: 0.07rem;
+}
+
+#familyDots {
+  position: relative;
+  top: 0.07rem;
+}
+
+#lebanonStar {
+  fill: #282828;
+}
+
+.inlineText {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes dash {

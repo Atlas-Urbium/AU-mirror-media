@@ -23,20 +23,71 @@ $(document).ready(function(){
         highlightDot.setAttribute('cx', village.x + '%');
         highlightDot.setAttribute('cy', village.y + '%');
         svg.appendChild(highlightDot);
+      }
 
+      for (let village of villages) {
+        if (village.name == village.bishopric) {  // draw a ring around a bishopric seat
+          let seatCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          seatCircle.setAttribute('class', 'cityCircle');
+          seatCircle.setAttribute('id', village.id + 'CityCircle');
+          seatCircle.setAttribute('cx', village.x + '%');
+          seatCircle.setAttribute('cy', village.y + '%');
+          svg.appendChild(seatCircle);
+        }
         let cityDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         cityDot.setAttribute('class', 'city');
-        cityDot.setAttribute('id', village.id);
+        cityDot.setAttribute('id', village.id + 'City');
         cityDot.setAttribute('cx', village.x + '%');
         cityDot.setAttribute('cy', village.y + '%');
         svg.appendChild(cityDot);
       };
+
+      let star = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      star.setAttribute('d', 'M534.89,319.86l.92,1.89,2.08.29-1.51,1.46.37,2.07-1.86-1-1.85,1,.37-2.07-1.52-1.5,2.09-.29Z');
+      svg.appendChild(star);
+
+      for (let village of villages) {
+        let buttonDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        buttonDot.setAttribute('class', 'cityButton');
+        buttonDot.setAttribute('id', village.id);
+        buttonDot.setAttribute('cx', village.x + '%');
+        buttonDot.setAttribute('cy', village.y + '%');
+        svg.appendChild(buttonDot);
+      }
+
+      // add family circles
+      for (i = 0; i < 8; i++) {
+        let familyDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        familyDot.setAttribute('class', 'dot');
+        familyDot.setAttribute('cx', remToPx(i * 0.9 + 0.45) + 'px');
+        familyDot.setAttribute('cy', '50%');
+        document.getElementById('familyDots').appendChild(familyDot);
+      }
+
+      // add bishopric circle
+      let bishopricSvg = document.getElementById('bishopricKey');
+      let bishopricDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      bishopricDot.setAttribute('class', 'city');
+      bishopricDot.setAttribute('id', 'bishopricKeyDot');
+      bishopricDot.setAttribute('cx', remToPx(0.45) + 'px');
+      bishopricDot.setAttribute('cy', '50%');
+      bishopricSvg.insertBefore(bishopricDot, bishopricSvg.childNodes[0]);
+
+      let bishopricCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      bishopricCircle.setAttribute('class', 'cityCircle');
+      bishopricCircle.setAttribute('id', 'bishopricKeyCircle');
+      bishopricCircle.setAttribute('cx', remToPx(0.45) + 'px');
+      bishopricCircle.setAttribute('cy', '50%');
+      bishopricSvg.insertBefore(bishopricCircle, bishopricSvg.childNodes[0]);
+
+      activeVillageId = '2'; // set active village to mount lebanon
       setVillage(activeVillageId, true);
     }
   }
 
   function highlightVillage(villageId, setActive) {
-    $('#' + villageId).css('fill', setActive ? activeColor : hoverColor);
+    $('#' + villageId + 'City').css('fill', setActive ? activeColor : hoverColor);
+    $('#' + villageId + 'CityCircle').css('stroke', setActive ? activeColor : hoverColor);
     $('#' + villageId + 'Highlight').css('fill', setActive ? activeColor : hoverColor);
 
     if (setActive) {
@@ -56,43 +107,61 @@ $(document).ready(function(){
 
     if (animate) {
       line.setAttribute('class', className + ' hidden');
-      svgName.appendChild(line);
+      svgName.insertBefore(line, svgName.childNodes[2]);
       $('#' + id).removeClass('hidden');
     } else {
       line.setAttribute('class', className);
-      svgName.appendChild(line);
+      svgName.insertBefore(line, svgName.childNodes[2]);
     }
   }
 
-  function clearLines() {
-    $('.line').animate({opacity: 0}, 200, 'linear', $('.line').remove());
+  function clearBishopric() {
+    $('.line').remove();
+    $('.city').css('fill', offWhite);
+    $('.cityCircle').css('stroke', offWhite);
   }
 
-  function drawLines(villageId) {
-    let className = 'line';
+  function getBishopric(villageId) {
     let index = getIndexOfK(bishoprics, villageId.toString());
-    let bishopric = bishoprics[index[0]];
-    let x1 = $('#' + bishopric[0]).attr("cx");
-    let y1 = $('#' + bishopric[0]).attr("cy");
+    let bishopric = bishoprics[index[0]].slice(0);
+  //  if (villageId == 2) { // if mount lebanon
+  //    for(let a = 1; a < bishoprics.length; a++) {
+  //      bishopric.push(bishoprics[a][0]);
+  //    }
+  //  } else {
+  //    bishopric.push('2');
+  //  }
+    return bishopric;
+  }
+
+  function highlightBishopric(villageId) {
+    let className = 'line';
+    let bishopric = getBishopric(villageId);
+    $('#' + bishopric[0] + 'City').css('fill', hoverColor);
+    $('#' + bishopric[0] + 'CityCircle').css('stroke', hoverColor);
     let i = 1;
+    let x1= $('#' + bishopric[0]).attr("cx");
+    let y1 = $('#' + bishopric[0]).attr("cy");
+    let x2;
+    let y2;
     while(bishopric[i]) {
       let newId = bishopric[i];
-      let x2 = $('#' + newId).attr("cx");
-      let y2 = $('#' + newId).attr("cy");
+      x2 = $('#' + newId).attr("cx");
+      y2 = $('#' + newId).attr("cy");
+      $('#' + newId + 'City').css('fill', hoverColor);
       drawLine(x1, y1, x2, y2, svg, className, i + 'Line', true);
       i++;
     }
-    if (villageId == 2) { // if mount lebanon
+    if (bishopric[0] == 2) {
       for(let a = 1; a < bishoprics.length; a++) {
-        let newId = bishoprics[a][0];
-        let x2 = $('#' + newId).attr("cx");
-        let y2 = $('#' + newId).attr("cy");
+        let newId = (bishoprics[a][0]);
+        x2 = $('#' + newId).attr("cx");
+        y2 = $('#' + newId).attr("cy");
         drawLine(x1, y1, x2, y2, svg, className, i + 'Line', true);
-        i++;
       }
     } else {
-      let x2 = x1;
-      let y2 = y1;
+      x2 = x1;
+      y2 = y1;
       x1 = $('#2').attr("cx");
       y1 = $('#2').attr("cy");
       drawLine(x1, y1, x2, y2, svg, className, i + 'Line', true);
@@ -100,7 +169,9 @@ $(document).ready(function(){
   }
 
   function resetVillage(villageId) {
-    $('#' + villageId).css('fill', offWhite);
+    let color = getBishopric(activeVillageId).includes(villageId.toString()) ? hoverColor : offWhite;
+    $('#' + villageId + 'City').css('fill', color);
+    $('#' + villageId + 'CityCircle').css('stroke', color);
     $('#' + villageId + 'Highlight').animate({r: '0.25rem'});
   }
 
@@ -111,17 +182,34 @@ $(document).ready(function(){
 
     let num = villageId > 9 ? villageId : '0' + villageId;
     $('#village_name').html((num + '.<br>' + village.name + '<br>' + village.state).toUpperCase());
-    $('#dates').html(village.yearFounded + '-' + village.yearDissolved);
+    let endYear = village.yearDissolved ? village.yearDissolved : 'present';
+    $('#dates').html(village.yearFounded + '-' + endYear);
     $('#bishopric').html(village.bishopric);
-    if(village.totalMembership !== null) {
-      var ratio = village.totalMembership / 4000.0 * 80;
+    if(village.name == village.bishopric) {
+      $('#bishopricKeyDot').css('fill', activeColor);
+      $('#bishopricKeyCircle').css('stroke', activeColor);
+    } else {
+      $('#bishopricKeyDot').css('fill', hoverColor);
+      $('#bishopricKeyCircle').css('stroke', hoverColor);
+    }
+    if(village.bishopric == 'Mount Lebanon') {
+      $('#lebanonStar').css('opacity', 1);
+    } else {
+      $('#lebanonStar').css('opacity', 0);
+    }
+    if(village.numMembers !== null) {
+      var ratio = remToPx(village.numMembers / 225);
+      $('#membershipBar').css('width', ratio + 'px');
       $('#membership').html(village.numMembers);
     };
     if(village.landHoldings != null) {
-      var ratio = village.landHoldings / 6000.0 * 80;
+      var ratio = remToPx(village.landHoldings / 600);
+      $('#landBar').css('width', ratio + 'px');
       $( '#landHoldings' ).html(village.landHoldings);
     };
     if(village.numFamilies != null) {
+      var width = village.numFamilies * 0.9;
+      $('#familyDots').css('width', width + 'rem');
       $('#families').html(village.numFamilies);
     };
     if(village.description != null) {
@@ -146,8 +234,8 @@ $(document).ready(function(){
     if (setActive) {
       resetVillage(activeVillageId);
       activeVillageId = villageId;
-      clearLines();
-      drawLines(villageId);
+      clearBishopric();
+      highlightBishopric(villageId);
     }
     highlightVillage(villageId, setActive);
     setSidebar(villageId, setActive);
@@ -171,14 +259,14 @@ $(document).ready(function(){
     }
   });
 
-  $('#us-coast-map-container').on('mouseover', 'svg .city', function(event) {
+  $('#us-coast-map-container').on('mouseover', 'svg .cityButton', function(event) {
     let villageId = parseInt($(this).attr('id'));
     if (villageId !== activeVillageId) {
       setVillage(villageId, false);
     }
   });
 
-  $('#us-coast-map-container').on('mouseout', 'svg .city', function(event) {
+  $('#us-coast-map-container').on('mouseout', 'svg .cityButton', function(event) {
     let villageId = parseInt($(this).attr('id'));
     if (villageId !== activeVillageId) {
       resetVillage(villageId);
@@ -186,9 +274,9 @@ $(document).ready(function(){
     }
   });
 
-  $('#us-coast-map-container').on('mousedown', 'svg .city', function(event) {
+  $('#us-coast-map-container').on('mousedown', 'svg .cityButton', function(event) {
     let villageId = parseInt($(this).attr('id'));
-    if (villageId !== activeVillageId) {
+    if (activeVillageId !== villageId) {
       setVillage(villageId, true);
     }
   });

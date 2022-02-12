@@ -1,11 +1,35 @@
-// Set shared constants
+/**
+ * This file defines many of the constants and helper functions used across
+ * atlas urbium's mirror media. Check out mirror_media.css for the grid and fonts.
+ */
+
+// SHARED CONSTANTS
 const remSize = 14.4;
 
-// standard colors
+
+// STANDARD COLORS
+// based on gruvbox colors
 const activeColor = "#d65d0e";
-const hoverColor = "#fe8019";
+const hoverColor = "#f4a657";
 const offWhite = "#efefef";
 const offBlack = "#282828";
+const grayDark = '#928374';
+const grayLight = '#ebdbb2';
+const redDark = '#cc241d';
+const redLight = '#fb4934';
+const yellowDark = '#d79921';
+const yellowLight = '#fabd2f';
+const greenDark = '#98971a';
+const greenLight = '#b8bb26';
+const aquaDark = '#689d6a';
+const aquaLight = '#8ec07c';
+const blueDark = '#458588';
+const blueLight = '#83a598';
+const purpleDark = '#b16286';
+const purpleLight = '#d3869b';
+
+
+// HELPER FUNCTIONS
 
 /**
  * index of multidimensional array
@@ -72,7 +96,9 @@ function textWrap(string, lineLength) {
   return textLines;
 }
 
-// standard button behavior
+
+// BASIC BUTTON BEHAVIOR
+
 $('.button-container').on('mouseover', 'svg', function(event) {
   $(this).find('circle').css('stroke', hoverColor);
   $(this).find('text').css('fill', hoverColor);
@@ -83,7 +109,12 @@ $('.button-container').on('mouseout', 'svg', function(event) {
   $(this).find('text').css('fill', offWhite);
 });
 
-$('.button-container, .toggleOff').on('mousedown', 'svg', function(event) {
+$('.button-container').on('mousedown', 'svg', function(event) {
+  $(this).find('circle').css('stroke', activeColor);
+  $(this).find('text').css('fill', activeColor);
+});
+
+$('.button-container').on('mouseup', 'svg', function(event) {
   $(this).find('circle').css('stroke', hoverColor);
   $(this).find('text').css('fill', hoverColor);
 });
