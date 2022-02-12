@@ -30,6 +30,20 @@ function pxToRem(px) {
   return px/remSize;
 }
 
+// need to add error checking
+function textWrap(string, charLimit) {
+  if (string.length < charLimit) {
+    return string;
+  }
+  let lastSpace = 0;
+  for (let i = 0; i < charLimit; i++) {
+    if (string[i] == ' ') {
+      lastSpace = i;
+    }
+  }
+  return string.substring(0, lastSpace);
+}
+
 $('.button-container').on('mouseover', 'svg', function(event) {
   $(this).find('circle').css('stroke', hoverColor);
   $(this).find('text').css('fill', hoverColor);

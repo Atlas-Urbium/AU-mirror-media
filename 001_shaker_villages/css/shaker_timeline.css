@@ -91,6 +91,19 @@ html {
   transition: fill 0.15s;
 }
 
+.timeline-event.context {
+  font-weight: 600;
+}
+
+.grayed-out {
+  fill: #928374;
+  opacity: 0.35;
+}
+
+.timeline-date-tick.grayed-out {
+  stroke: #928374;
+}
+
 .selected {
   fill: #d65d0e;
   stroke: #d65d0e;

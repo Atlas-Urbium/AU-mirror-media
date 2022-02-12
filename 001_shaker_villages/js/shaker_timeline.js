@@ -58,35 +58,61 @@ $(document).ready(function(){
       for (let date of dates) {
         let dateLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         dateLabel.setAttributeNS(null, 'id', date.date + "Date");
-        if (parseInt(date.date) % 10 == 0) {
-          dateLabel.setAttributeNS(null, 'class', "timeline-date");
-        } else {
-          dateLabel.setAttributeNS(null, 'class', "timeline-date small");
+        let classString = 'timeline-date';
+        if (parseInt(date.date) % 10 != 0) {
+          classString += " small";
         }
-        dateLabel.setAttributeNS(null, 'x', '3.25rem');
-        dateLabel.setAttributeNS(null, 'y', (height + 0.1) + 'rem');
+        if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) {
+          classString += ' grayed-out';
+        }
+        dateLabel.setAttributeNS(null, 'class', classString);
+        dateLabel.setAttributeNS(null, 'x', remToPx(3.25) + 'px');
+        dateLabel.setAttributeNS(null, 'y', remToPx(height + 0.1) + 'px');
         let textNode = document.createTextNode(date.date);
         dateLabel.appendChild(textNode);
         timelineSvg.appendChild(dateLabel);
 
         let dateTick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         dateTick.setAttribute('id', date.date + "DateTick");
-        dateTick.setAttribute('class', "timeline-date-tick");
-        dateTick.setAttribute('x1', '3.75rem');
-        dateTick.setAttribute('y1', height + 'rem');
-        dateTick.setAttribute('x2', '4.25rem');
-        dateTick.setAttribute('y2', height + 'rem');
+        classString = "timeline-date-tick";
+        if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) {
+          classString += ' grayed-out';
+        }
+        dateTick.setAttribute('class', classString);
+        dateTick.setAttribute('x1', remToPx(3.75) + 'px' );
+        dateTick.setAttribute('y1', remToPx(height) + 'px');
+        dateTick.setAttribute('x2', remToPx(4.25) + 'px');
+        dateTick.setAttribute('y2', remToPx(height) + 'px');
         timelineSvg.appendChild(dateTick);
 
         if (date.event) {
-          let dateEvent = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-          dateEvent.setAttributeNS(null, 'id', date.date + "Event");
-          dateEvent.setAttributeNS(null, 'class', "timeline-event");
-          dateEvent.setAttributeNS(null, 'x', '4.75rem');
-          dateEvent.setAttributeNS(null, 'y', (height + 0.1) + 'rem');
-          textNode = document.createTextNode(date.event);
-          dateEvent.appendChild(textNode);
-          timelineSvg.appendChild(dateEvent);
+          let charLimit = 38;
+          let moreString = true;
+          let stringToProcess = date.event;
+          let lineNumber = 1;
+          classString = "timeline-event";
+          if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) {
+            classString += ' grayed-out';
+          }
+          if (date.category == 'Context') {
+            classString += ' context';
+          }
+          while (moreString) {
+            if (stringToProcess.length < charLimit) {
+              moreString = false;
+            }
+            let dateEvent = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            dateEvent.setAttributeNS(null, 'id', date.date + "Event");
+            dateEvent.setAttributeNS(null, 'class', classString);
+            dateEvent.setAttributeNS(null, 'x', remToPx(4.75) + 'px');
+            dateEvent.setAttributeNS(null, 'y', remToPx(height + lineNumber - 1) + 'px');
+            let textLine = textWrap(stringToProcess, charLimit);
+            stringToProcess = stringToProcess.substring(textLine.length);
+            textNode = document.createTextNode(textLine);
+            dateEvent.appendChild(textNode);
+            timelineSvg.appendChild(dateEvent);
+            lineNumber++;
+          }
         }
 
         height += 2;
