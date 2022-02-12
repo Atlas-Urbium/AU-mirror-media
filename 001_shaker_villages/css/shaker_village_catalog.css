@@ -38,14 +38,12 @@ html {
   r: .25rem;
   stroke-width: 0;
   fill: #EFEFEF;
-  z-index: 100;
 }
 
 .cityHighlight {
   r: 0.25rem;
   opacity: 0.25;
   stroke-width: 0;
-  z-index: 1;
 }
 
 .line {

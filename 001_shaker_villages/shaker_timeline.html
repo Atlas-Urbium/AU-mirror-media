@@ -14,8 +14,8 @@
 </head>
 <body>
   <div class="grid-container medium-block">
-    <div id="state-maps">
-      <svg width="100%" height="100%">
+    <div id="state-maps-container">
+      <svg id='state-maps' width="100%" height="100%">
         <image xlink:href='./img/state_maps.svg' height='100%' width='100%' x='0' y='0'></image>
         <!--- numbers --->
         <text class="graphic-text" x="24%" y="26%">1.</text>
@@ -37,14 +37,14 @@
       AND CONNECTICUT<br>
       2. INDIANA, OHIO, AND KENTUCKY</p>
   </div>
-  <div id="block-header"><h2>SHAKER TIMELINE</h2></div>
-  <div id="sidebar-timeline">
-    <svg width="100%" height="200%">
-      <text class="timeline-date" x="0%" y="1rem">1740</text>
-      <text class="timeline-date" x="0%" y="11rem">1750</text>
-    </svg>
+  <div id="block-header">
+    <h2>SHAKER TIMELINE</h2>
+    <h3 id='date-ticker'>1760</h3>
   </div>
-  <div id="play-button" class="button">
+  <div id="sidebar-timeline" class="scrollable">
+    <svg id='timeline' width="100%" height="200%"></svg>
+  </div>
+  <div id="play-button" class="button-container">
     <svg width="100%" height="100%" class="button">
       <circle/>
       <text x="50%" y="50%">PLAY</text>
@@ -52,6 +52,7 @@
   </div>
   <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="../js/jquery-csv.min.js"></script>
-  <script src="./js/shaker_village_catalog.js"></script>
+  <script type='text/javascript' src='../js/mirror_media.js'></script>
+  <script src="./js/shaker_timeline.js"></script>
 </body>
 </html>

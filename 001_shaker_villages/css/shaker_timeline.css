@@ -11,7 +11,7 @@ html {
   z-index: 3;
 }
 
-#state-maps {
+#state-maps-container {
   grid-area: 1 / 2 / span 9 / span 5;
   z-index: -1;
 }
@@ -22,10 +22,14 @@ html {
 
 #sidebar-timeline {
   grid-area: 1 / 7 / span 8 / span 3;
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
   width: 100%;
   height: 100%;
+}
+
+#sidebar-timeline.scrollable {
+  overflow-y: scroll;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -44,6 +48,10 @@ html {
   grid-area: 9 / 8 / span 1 / span 1;
 }
 
+#date-ticker {
+  color: #d65d0e;
+}
+
 .graphic-text {
   fill: #efefef;
   font-size: 0.9rem;
@@ -55,18 +63,37 @@ html {
 
 .timeline-date {
   fill: #efefef;
-  font-size: 0.9rem;
+  font-size: 1.23rem;
   font-family: "Inter";
   font-weight: 600;
   dominant-baseline: middle;
+  text-anchor: end;
+}
+
+.timeline-date.small {
+  font-size: 0.9rem;
+  transition: color 0.15s;
+}
+
+.timeline-date-tick {
+  stroke: #efefef;
+  stroke-width: 0.1rem;
+  transition: stroke 0.15s;
 }
 
 .timeline-event {
   fill: #efefef;
   font-size: 0.9rem;
-  font-family: "Inter";
-  font-weight: 600;
+  font-family: "Inconsolata";
+  font-weight: 300;
   dominant-baseline: middle;
+  text-anchor: start;
+  transition: fill 0.15s;
+}
+
+.selected {
+  fill: #d65d0e;
+  stroke: #d65d0e;
 }
 
 #states-label {
@@ -76,4 +103,15 @@ html {
 
 #states-list {
   margin-top: 1rem;
+}
+
+.city {
+  fill: #282828;
+  stroke-width: 0;
+}
+
+.cityPop {
+  fill: #8ec07c;
+  opacity: .5;
+  stroke-width: 0;
 }

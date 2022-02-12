@@ -1,5 +1,5 @@
 // Set shared constants
-
+const remSize = 14.4;
 
 // standard colors
 const activeColor = "#d65d0e";
@@ -22,6 +22,14 @@ function getIndexOfK(arr, k) {
   }
 }
 
+function remToPx(rem) {
+  return remSize*rem;
+}
+
+function pxToRem(px) {
+  return px/remSize;
+}
+
 $('.button-container').on('mouseover', 'svg', function(event) {
   $(this).find('circle').css('stroke', hoverColor);
   $(this).find('text').css('fill', hoverColor);
@@ -30,4 +38,14 @@ $('.button-container').on('mouseover', 'svg', function(event) {
 $('.button-container').on('mouseout', 'svg', function(event) {
   $(this).find('circle').css('stroke', offWhite);
   $(this).find('text').css('fill', offWhite);
+});
+
+$('.button-container, .toggleOff').on('mousedown', 'svg', function(event) {
+  $(this).find('circle').css('stroke', hoverColor);
+  $(this).find('text').css('fill', hoverColor);
+});
+
+$('.button-container, .toggleOn').on('mousedown', 'svg', function(event) {
+  $(this).find('circle').css('stroke', activeColor);
+  $(this).find('text').css('fill', activeColor);
 });
