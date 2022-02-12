@@ -1,7 +1,7 @@
 const populationFile = 'population_data.csv';
 const locationFile = 'timeline_village_locations.csv';
 const eventsFile = 'shaker_events.csv';
-const dateOffset = 1760;
+const dateOffset = 1770;
 const maxDate = 2000;
 const timeInterval = 400;
 let timer;
@@ -53,18 +53,15 @@ $(document).ready(function(){
       // set up timeline
       timelineSvg = document.getElementById('timeline');
 
-      let height = 1;
+      let height = 1; // height of timeline date in rems
 
       for (let date of dates) {
+        // set up dates on left hand side
         let dateLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         dateLabel.setAttributeNS(null, 'id', date.date + "Date");
         let classString = 'timeline-date';
-        if (parseInt(date.date) % 10 != 0) {
-          classString += " small";
-        }
-        if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) {
-          classString += ' grayed-out';
-        }
+        if (parseInt(date.date) % 10 != 0) { classString += " small";} // only decades are large
+        if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) { classString += ' grayed-out';} // non accessible dates grayed out
         dateLabel.setAttributeNS(null, 'class', classString);
         dateLabel.setAttributeNS(null, 'x', remToPx(3.25) + 'px');
         dateLabel.setAttributeNS(null, 'y', remToPx(height + 0.1) + 'px');
@@ -72,6 +69,7 @@ $(document).ready(function(){
         dateLabel.appendChild(textNode);
         timelineSvg.appendChild(dateLabel);
 
+        // set up timeline ticks
         let dateTick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
         dateTick.setAttribute('id', date.date + "DateTick");
         classString = "timeline-date-tick";
@@ -85,30 +83,24 @@ $(document).ready(function(){
         dateTick.setAttribute('y2', remToPx(height) + 'px');
         timelineSvg.appendChild(dateTick);
 
+        // set up timeline event text
         if (date.event) {
-          let charLimit = 38;
-          let moreString = true;
-          let stringToProcess = date.event;
-          let lineNumber = 1;
+          // set up the classes
           classString = "timeline-event";
-          if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) {
-            classString += ' grayed-out';
-          }
-          if (date.category == 'Context') {
-            classString += ' context';
-          }
-          while (moreString) {
-            if (stringToProcess.length < charLimit) {
-              moreString = false;
-            }
+          if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) { classString += ' grayed-out'; }
+          if (date.category == 'Context') { classString += ' context'; }
+
+          // custom svg text wrap
+          let charLimit = 38; // limit of displayable chars in timeline
+          let lines = textWrap(date.event, charLimit);
+          let lineNumber = 1;
+          for (line of lines) {
             let dateEvent = document.createElementNS('http://www.w3.org/2000/svg', 'text');
             dateEvent.setAttributeNS(null, 'id', date.date + "Event");
             dateEvent.setAttributeNS(null, 'class', classString);
             dateEvent.setAttributeNS(null, 'x', remToPx(4.75) + 'px');
             dateEvent.setAttributeNS(null, 'y', remToPx(height + lineNumber - 1) + 'px');
-            let textLine = textWrap(stringToProcess, charLimit);
-            stringToProcess = stringToProcess.substring(textLine.length);
-            textNode = document.createTextNode(textLine);
+            textNode = document.createTextNode(line);
             dateEvent.appendChild(textNode);
             timelineSvg.appendChild(dateEvent);
             lineNumber++;
@@ -189,7 +181,7 @@ $(document).ready(function(){
     currDate = dateOffset - 1;
   }
 
-  // when click the button
+  // play/pause putton behavior
   $('.button-container').on('mousedown', 'svg', function(event) {
     if (playing) { // pause if playing
       setPause();
