@@ -4,6 +4,7 @@ const eventsFile = 'shaker_events.csv';
 const dateOffset = 1770;
 const maxDate = 2000;
 const timeInterval = 400;
+const blockSize = 'medium';
 let timer;
 
 $(document).ready(function(){
@@ -16,6 +17,73 @@ $(document).ready(function(){
   let timelineSvg;
   let currDate;
   let playing = false;
+
+  // sets up the timeline
+  function timelineSetUp() {
+    timelineSvg = document.getElementById('timeline');
+
+    // clear the timeline if it is not empty
+    timelineSvg.innerHTML = '';
+
+    let height = 1; // height of timeline date in rems
+
+    for (let date of dates) {
+      // set up dates on left hand side
+      let dateLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      dateLabel.setAttributeNS(null, 'id', date.date + "Date");
+      let classString = 'timeline-date';
+      if (parseInt(date.date) % 10 != 0) { classString += " small";} // only decades are large
+      if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) { classString += ' grayed-out';} // non accessible dates grayed out
+      dateLabel.setAttributeNS(null, 'class', classString);
+      dateLabel.setAttributeNS(null, 'x', remToPx(3.25, blockSize) + 'px');
+      dateLabel.setAttributeNS(null, 'y', remToPx(height + 0.1, blockSize) + 'px');
+      let textNode = document.createTextNode(date.date);
+      dateLabel.appendChild(textNode);
+      timelineSvg.appendChild(dateLabel);
+
+      // set up timeline ticks
+      let dateTick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      dateTick.setAttribute('id', date.date + "DateTick");
+      classString = "timeline-date-tick";
+      if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) {
+        classString += ' grayed-out';
+      }
+      dateTick.setAttribute('class', classString);
+      dateTick.setAttribute('x1', remToPx(3.75, blockSize) + 'px' );
+      dateTick.setAttribute('y1', remToPx(height, blockSize) + 'px');
+      dateTick.setAttribute('x2', remToPx(4.25, blockSize) + 'px');
+      dateTick.setAttribute('y2', remToPx(height, blockSize) + 'px');
+      timelineSvg.appendChild(dateTick);
+
+      // set up timeline event text
+      if (date.event) {
+        // set up the classes
+        classString = "timeline-event";
+        if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) { classString += ' grayed-out'; }
+        if (date.category == 'Context') { classString += ' context'; }
+
+        // custom svg text wrap
+        let charLimit = 38; // limit of displayable chars in timeline
+        let lines = textWrap(date.event, charLimit);
+        let lineNumber = 1;
+        for (line of lines) {
+          let dateEvent = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+          dateEvent.setAttributeNS(null, 'id', date.date + "Event");
+          dateEvent.setAttributeNS(null, 'class', classString);
+          dateEvent.setAttributeNS(null, 'x', remToPx(4.75, blockSize) + 'px');
+          dateEvent.setAttributeNS(null, 'y', remToPx(height + lineNumber - 1, blockSize) + 'px');
+          textNode = document.createTextNode(line);
+          dateEvent.appendChild(textNode);
+          timelineSvg.appendChild(dateEvent);
+          lineNumber++;
+        }
+      }
+
+      height += 2;
+    }
+
+    $('#timeline').css('height', height + 'rem');
+  }
 
   function setUp(csv, csvName) {
     if (csvName == populationFile) {
@@ -51,69 +119,10 @@ $(document).ready(function(){
       };
 
       // set up timeline
-      timelineSvg = document.getElementById('timeline');
-
-      let height = 1; // height of timeline date in rems
-
-      for (let date of dates) {
-        // set up dates on left hand side
-        let dateLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        dateLabel.setAttributeNS(null, 'id', date.date + "Date");
-        let classString = 'timeline-date';
-        if (parseInt(date.date) % 10 != 0) { classString += " small";} // only decades are large
-        if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) { classString += ' grayed-out';} // non accessible dates grayed out
-        dateLabel.setAttributeNS(null, 'class', classString);
-        dateLabel.setAttributeNS(null, 'x', remToPx(3.25) + 'px');
-        dateLabel.setAttributeNS(null, 'y', remToPx(height + 0.1) + 'px');
-        let textNode = document.createTextNode(date.date);
-        dateLabel.appendChild(textNode);
-        timelineSvg.appendChild(dateLabel);
-
-        // set up timeline ticks
-        let dateTick = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        dateTick.setAttribute('id', date.date + "DateTick");
-        classString = "timeline-date-tick";
-        if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) {
-          classString += ' grayed-out';
-        }
-        dateTick.setAttribute('class', classString);
-        dateTick.setAttribute('x1', remToPx(3.75) + 'px' );
-        dateTick.setAttribute('y1', remToPx(height) + 'px');
-        dateTick.setAttribute('x2', remToPx(4.25) + 'px');
-        dateTick.setAttribute('y2', remToPx(height) + 'px');
-        timelineSvg.appendChild(dateTick);
-
-        // set up timeline event text
-        if (date.event) {
-          // set up the classes
-          classString = "timeline-event";
-          if (parseInt(date.date) < dateOffset || parseInt(date.date) > maxDate) { classString += ' grayed-out'; }
-          if (date.category == 'Context') { classString += ' context'; }
-
-          // custom svg text wrap
-          let charLimit = 38; // limit of displayable chars in timeline
-          let lines = textWrap(date.event, charLimit);
-          let lineNumber = 1;
-          for (line of lines) {
-            let dateEvent = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            dateEvent.setAttributeNS(null, 'id', date.date + "Event");
-            dateEvent.setAttributeNS(null, 'class', classString);
-            dateEvent.setAttributeNS(null, 'x', remToPx(4.75) + 'px');
-            dateEvent.setAttributeNS(null, 'y', remToPx(height + lineNumber - 1) + 'px');
-            textNode = document.createTextNode(line);
-            dateEvent.appendChild(textNode);
-            timelineSvg.appendChild(dateEvent);
-            lineNumber++;
-          }
-        }
-
-        height += 2;
-      }
-
-      $('#timeline').css('height', height + 'rem');
+      timelineSetUp();
 
       currDate = dateOffset;
-      setDate(currDate, true);
+      setDate(true);
     }
   }
 
@@ -141,9 +150,9 @@ $(document).ready(function(){
   }
 
   function setTimeline(date) {
-    // $('.timeline-date').removeClass('selected');
+    $('.timeline-date').removeClass('selected');
     $('.timeline-date-tick').removeClass('selected');
-    // $('#' + date + 'Date').addClass('selected');
+    $('#' + date + 'Date').addClass('selected');
     $('#' + date + 'DateTick').addClass('selected');
   }
 
@@ -155,7 +164,8 @@ $(document).ready(function(){
     $('#date-ticker').html(currDate);
     setTimeline(currDate);
     if (setScroll) { // set scroll
-      $('#sidebar-timeline').animate({ scrollTop: (remToPx(2*(currDate - dateOffset)))}, timeInterval, 'linear');
+      let pixelsScrolled = remToPx(2*(currDate - dateOffset), blockSize);
+      $('#sidebar-timeline').animate({ scrollTop: pixelsScrolled}, timeInterval, 'linear');
     }
   }
 
@@ -205,7 +215,8 @@ $(document).ready(function(){
   // when paused, scroll sets date
   $('#sidebar-timeline').scroll(function() {
     if (!playing) {
-      currDate = Math.round(pxToRem($('#sidebar-timeline').scrollTop())/2 + dateOffset);
+      let remsScrolled = pxToRem($('#sidebar-timeline').scrollTop(), blockSize);
+      currDate = Math.round(remsScrolled/2 + dateOffset);
       if (currDate > maxDate) {
         currDate = maxDate;
       }
@@ -216,6 +227,11 @@ $(document).ready(function(){
         $('#play-button').find('text').html('PLAY');
       }
     }
+  });
+
+  // must reset timeline when window is resized because timeline units are in px
+  $( window ).resize(function() {
+    timelineSetUp();
   });
 
   // ajax requests for data setup

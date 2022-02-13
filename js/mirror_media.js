@@ -4,7 +4,6 @@
  */
 
 // SHARED CONSTANTS
-const remSize = 14.4;
 
 
 // STANDARD COLORS
@@ -47,12 +46,37 @@ function getIndexOfK(arr, k) {
 }
 
 /**
+ * gets size of rem unit in pixels
+ * @param blockSize {String} - large, medium, or small
+ * @return {Number} - size of rem unit in pixels
+ */
+function remUnit(blockSize) {
+  let minWidth = 0;
+  let windowSize = $(window).width();
+  let rems = 0;
+  if (blockSize == 'large') {
+    minWidth = 1280;
+    rems = windowSize * 0.01125;
+  } else if (blockSize == 'medium') {
+    minWidth = 1028;
+    rems = windowSize * 0.014;
+  } else if (blockSize == 'small') {
+    minWidth = 720;
+    rems = windowSize * 0.02;
+  }
+  if (windowSize >= minWidth) {
+    rems = 14.4;
+  }
+  return rems;
+}
+
+/**
  * converts rem units to pixels based on the root font size
  * @param rem {Number} - rems
  * @return {Number} - pixel conversion
  */
-function remToPx(rem) {
-  return remSize*rem;
+function remToPx(rem, blockSize) {
+  return remUnit(blockSize)*rem;
 }
 
 /**
@@ -60,8 +84,8 @@ function remToPx(rem) {
  * @param px {Number} - pixels
  * @return {Number} - rem conversion
  */
-function pxToRem(px) {
-  return px/remSize;
+function pxToRem(px, blockSize) {
+  return px/remUnit(blockSize);
 }
 
 /**

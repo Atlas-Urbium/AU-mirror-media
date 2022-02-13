@@ -42,10 +42,6 @@ $(document).ready(function(){
         svg.appendChild(cityDot);
       };
 
-      let star = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      star.setAttribute('d', 'M534.89,319.86l.92,1.89,2.08.29-1.51,1.46.37,2.07-1.86-1-1.85,1,.37-2.07-1.52-1.5,2.09-.29Z');
-      svg.appendChild(star);
-
       for (let village of villages) {
         let buttonDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         buttonDot.setAttribute('class', 'cityButton');
@@ -59,7 +55,7 @@ $(document).ready(function(){
       for (i = 0; i < 8; i++) {
         let familyDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         familyDot.setAttribute('class', 'dot');
-        familyDot.setAttribute('cx', remToPx(i * 0.9 + 0.45) + 'px');
+        familyDot.setAttribute('cx', (i * 0.9 + 0.45) + 'rem');
         familyDot.setAttribute('cy', '50%');
         document.getElementById('familyDots').appendChild(familyDot);
       }
@@ -69,14 +65,14 @@ $(document).ready(function(){
       let bishopricDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       bishopricDot.setAttribute('class', 'city');
       bishopricDot.setAttribute('id', 'bishopricKeyDot');
-      bishopricDot.setAttribute('cx', remToPx(0.45) + 'px');
+      bishopricDot.setAttribute('cx', '0.45rem');
       bishopricDot.setAttribute('cy', '50%');
       bishopricSvg.insertBefore(bishopricDot, bishopricSvg.childNodes[0]);
 
       let bishopricCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       bishopricCircle.setAttribute('class', 'cityCircle');
       bishopricCircle.setAttribute('id', 'bishopricKeyCircle');
-      bishopricCircle.setAttribute('cx', remToPx(0.45) + 'px');
+      bishopricCircle.setAttribute('cx', '0.45rem');
       bishopricCircle.setAttribute('cy', '50%');
       bishopricSvg.insertBefore(bishopricCircle, bishopricSvg.childNodes[0]);
 
@@ -192,19 +188,14 @@ $(document).ready(function(){
       $('#bishopricKeyDot').css('fill', hoverColor);
       $('#bishopricKeyCircle').css('stroke', hoverColor);
     }
-    if(village.bishopric == 'Mount Lebanon') {
-      $('#lebanonStar').css('opacity', 1);
-    } else {
-      $('#lebanonStar').css('opacity', 0);
-    }
     if(village.numMembers !== null) {
-      var ratio = remToPx(village.numMembers / 225);
-      $('#membershipBar').css('width', ratio + 'px');
+      var ratio = village.numMembers / 225;
+      $('#membershipBar').css('width', ratio + 'rem');
       $('#membership').html(village.numMembers);
     };
     if(village.landHoldings != null) {
-      var ratio = remToPx(village.landHoldings / 600);
-      $('#landBar').css('width', ratio + 'px');
+      var ratio = village.landHoldings / 600;
+      $('#landBar').css('width', ratio + 'rem');
       $( '#landHoldings' ).html(village.landHoldings);
     };
     if(village.numFamilies != null) {
@@ -223,9 +214,7 @@ $(document).ready(function(){
       $('#sidebar-header').animate({opacity: 1}, 150, 'linear');
       $('#sidebar-content').animate({opacity: 1}, 150, 'linear');
     } else {
-      $('#sidebar-header').animate({opacity: 0}, 50, 'linear', setSidebarContent(villageId));
-      $('#sidebar-content').animate({opacity: 0}, 50, 'linear');
-      $('#sidebar-header').animate({opacity: 0.25}, 100, 'linear');
+      $('#sidebar-header').animate({opacity: 0.25}, 100, 'linear', setSidebarContent(villageId));
       $('#sidebar-content').animate({opacity: 0.25}, 100, 'linear');
     }
   }

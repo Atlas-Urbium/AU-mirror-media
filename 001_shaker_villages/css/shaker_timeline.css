@@ -66,13 +66,19 @@ html {
   font-size: 1.23rem;
   font-family: "Inter";
   font-weight: 600;
+  stroke-width: 0;
   dominant-baseline: middle;
   text-anchor: end;
+  transition: fill 0.15s;
 }
 
 .timeline-date.small {
   font-size: 0.9rem;
   transition: color 0.15s;
+}
+
+.timeline-date.selected {
+  fill: #d65d0e;
 }
 
 .timeline-date-tick {
@@ -86,6 +92,7 @@ html {
   font-size: 0.9rem;
   font-family: "Inconsolata";
   font-weight: 300;
+  stroke-width: 0;
   dominant-baseline: middle;
   text-anchor: start;
   transition: fill 0.15s;
@@ -104,7 +111,7 @@ html {
   stroke: #928374;
 }
 
-.selected {
+.timeline-date-tick.selected {
   fill: #d65d0e;
   stroke: #d65d0e;
 }

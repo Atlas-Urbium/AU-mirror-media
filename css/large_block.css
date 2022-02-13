@@ -1,0 +1,11 @@
+@media only screen and (max-width: 1280px) {
+  html {
+    font-size: 1.125vw;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  html {
+    font-size: 14.4px;
+  }
+}
