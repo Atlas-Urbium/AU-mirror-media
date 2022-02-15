@@ -5,6 +5,7 @@ $(document).ready(function(){
   let files = 0;
   let svg;
   let activeVillageId = 2;
+  let blockSize = 'large'
 
   function setUpCities (csv, csvName) {
     if (csvName == "village_data") {
@@ -51,33 +52,39 @@ $(document).ready(function(){
         svg.appendChild(buttonDot);
       }
 
-      // add family circles
-      for (i = 0; i < 8; i++) {
-        let familyDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        familyDot.setAttribute('class', 'dot');
-        familyDot.setAttribute('cx', (i * 0.9 + 0.45) + 'rem');
-        familyDot.setAttribute('cy', '50%');
-        document.getElementById('familyDots').appendChild(familyDot);
-      }
+      addFamilyCircles();
 
       // add bishopric circle
       let bishopricSvg = document.getElementById('bishopricKey');
       let bishopricDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       bishopricDot.setAttribute('class', 'city');
       bishopricDot.setAttribute('id', 'bishopricKeyDot');
-      bishopricDot.setAttribute('cx', '0.45rem');
+      bishopricDot.setAttribute('cx', '50%');
       bishopricDot.setAttribute('cy', '50%');
       bishopricSvg.insertBefore(bishopricDot, bishopricSvg.childNodes[0]);
 
       let bishopricCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       bishopricCircle.setAttribute('class', 'cityCircle');
       bishopricCircle.setAttribute('id', 'bishopricKeyCircle');
-      bishopricCircle.setAttribute('cx', '0.45rem');
+      bishopricCircle.setAttribute('cx', '50%');
       bishopricCircle.setAttribute('cy', '50%');
       bishopricSvg.insertBefore(bishopricCircle, bishopricSvg.childNodes[0]);
 
       activeVillageId = '2'; // set active village to mount lebanon
       setVillage(activeVillageId, true);
+    }
+  }
+
+  function addFamilyCircles() {
+    $('#familyDots').empty(); 
+    // add family circles
+    for (i = 0; i < 8; i++) {
+      let familyDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      familyDot.setAttribute('class', 'dot');
+      let offset = i * 0.9 + 0.45
+      familyDot.setAttribute('cx', remToPx(offset, blockSize) + 'px');
+      familyDot.setAttribute('cy', '50%');
+      document.getElementById('familyDots').appendChild(familyDot);
     }
   }
 
@@ -287,5 +294,9 @@ $(document).ready(function(){
       }
     }
     setVillage(villageId, true);
+  });
+
+  $( window ).resize(function() {
+    addFamilyCircles();
   });
 });

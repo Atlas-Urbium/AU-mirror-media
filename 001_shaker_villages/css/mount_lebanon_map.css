@@ -1,0 +1,31 @@
+html {
+  font-size: 14.4px;
+}
+
+@media only screen and (max-width: 550px) {
+  html {
+    font-size: 2vw;
+  }
+}
+
+.image-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 72vw;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.click-text {
+  font-size: 1.23rem;
+  font-family: "Inter";
+  font-weight: 600;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+.click-text.hidden {
+  display: none;
+}
