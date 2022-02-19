@@ -9,6 +9,7 @@
 
 html {
   color: #efefef;
+  background-color: #282828;
 }
 
 h1 {
@@ -83,6 +84,16 @@ p.tiny-text {
   padding: 0.1989rem 0 0 0;
 }
 
+ol {
+  font-family: "Inconsolata", monospace;
+  font-weight: 300;
+  font-size: 0.9rem;
+  line-height: 1rem;
+  list-style-position: outside;
+  margin: 0 0 -0.1989rem 0;
+  padding: 0.1989rem 0 0 0;
+}
+
 /* grid */
 
 .grid-container {
@@ -135,6 +146,12 @@ p.tiny-text {
   y: 3rem;
   dominant-baseline: middle;
   text-anchor: middle;
+}
+
+.text-button {
+  display: block;
+  cursor: pointer;
+  width: 100%;
 }
 
 .noselect {

@@ -1,0 +1,41 @@
+.grid-container {
+  grid-template-rows: 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem;
+}
+
+#block-header {
+  grid-area: 1 / 1 / span 1 / span 6;
+}
+
+#shaker-villages {
+  grid-area: 2 / 1 / span 2 / span 3;
+}
+
+ul {
+  font-family: "Inconsolata", monospace;
+  font-weight: 300;
+  font-size: 1.23rem;
+  line-height: 2rem;
+  list-style-type: none;
+  margin: 0 0 -0.49rem 0;
+  padding: 0.49rem 0 0 0;
+}
+
+/* unvisited link */
+a:link {
+  color: #EFEFEF;
+}
+
+/* visited link */
+a:visited {
+  color: #EFEFEF;
+}
+
+/* mouse over link */
+a:hover {
+  color: #f4a657;
+}
+
+/* selected link */
+a:active {
+  color: #d65d0e;
+}

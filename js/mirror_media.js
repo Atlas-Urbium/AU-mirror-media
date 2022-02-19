@@ -143,7 +143,54 @@ $('.button-container').on('mouseup', 'svg', function(event) {
   $(this).find('text').css('fill', hoverColor);
 });
 
-$('.button-container, .toggleOn').on('mousedown', 'svg', function(event) {
-  $(this).find('circle').css('stroke', activeColor);
-  $(this).find('text').css('fill', activeColor);
+$('.text-button').on('mouseover', function(event) {
+  if ($(this).hasClass('switch')) {
+    if (!$(this).hasClass('on')) {
+      $(this).find('h4').css('color', hoverColor);
+      $(this).find('p').css('color', hoverColor);
+    }
+  } else {
+    $(this).find('h4').css('color', hoverColor);
+    $(this).find('p').css('color', hoverColor);
+  }
+});
+
+$('.text-button').on('mouseout', function(event) {
+  if ($(this).hasClass('switch')) {
+    if (!$(this).hasClass('on')) {
+      $(this).find('h4').css('color', offWhite);
+      $(this).find('p').css('color', offWhite);
+    }
+  } else {
+    $(this).find('h4').css('color', offWhite);
+    $(this).find('p').css('color', offWhite);
+  }
+});
+
+$('.text-button').on('mousedown', function(event) {
+  if ($(this).hasClass('switch')) {
+    if (!$(this).hasClass('on')) {
+      $('.switch').removeClass('on');
+      $('.switch').find('h4').css('color', offWhite);
+      $('.switch').find('p').css('color', offWhite);
+      $(this).addClass('on');
+      $(this).find('h4').css('color', activeColor);
+      $(this).find('p').css('color', activeColor);
+    }
+  } else {
+    $(this).find('h4').css('color', activeColor);
+    $(this).find('p').css('color', activeColor);
+  }
+});
+
+$('.text-button').on('mouseup', function(event) {
+  if ($(this).hasClass('switch')) {
+    if (!$(this).hasClass('on')) {
+      $(this).find('h4').css('color', hoverColor);
+      $(this).find('p').css('color', hoverColor);
+    }
+  } else {
+    $(this).find('h4').css('color', hoverColor);
+    $(this).find('p').css('color', hoverColor);
+  }
 });

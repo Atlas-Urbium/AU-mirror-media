@@ -1,0 +1,101 @@
+html {
+  background-color: #282828;
+}
+
+.grid-container {
+  grid-template-rows: 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem;
+}
+
+h5 {
+  font-family: "Inter";
+  font-weight: 600;
+  line-height: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+#block-header {
+  grid-area: 1 / 5 / span 1 / span 2;
+}
+
+#sidebar {
+  grid-area: 2 / 5 / span 3 / span 2;
+}
+
+#meetinghouse-container {
+  grid-area: 1 / 1 / span 8 / span 6;
+}
+
+#plan-title {
+  grid-area: 5 / 1 / span 1 / span 6;
+}
+
+#elevation-title {
+  grid-area: 8 / 2 / span 1 / span 2;
+}
+
+#floor-button-container {
+  grid-area: 6 / 1 / span 3 / span 1;
+}
+
+#third-floor {
+  display: none;
+}
+
+#labelText {
+  fill: #efefef;
+  font-size: 0.9rem;
+  font-family: "Inconsolata";
+  font-weight: 300;
+  stroke-width: 0;
+  dominant-baseline: middle;
+  text-anchor: middle;
+  -webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
+}
+
+#benches {
+  -webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
+}
+
+#benches-away {
+  -webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
+}
+
+.path {
+  -webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
+}
+
+.dot {
+  r: 0.25rem;
+  -webkit-transition: opacity 1s; /* Safari */
+  transition: opacity 1s;
+}
+
+.dot.man {
+  fill: #458588;
+}
+
+.dot.woman {
+  fill: #b16286;
+}
+
+.dot.spectator {
+  fill: #928374;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.text-button {
+  padding-top: 0.5rem;
+  padding-bottom: 1.5rem;
+}
