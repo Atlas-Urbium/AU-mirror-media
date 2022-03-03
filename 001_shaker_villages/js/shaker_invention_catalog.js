@@ -1,16 +1,18 @@
 $(document).ready(function(){
 
   let files = 0;
-  let imagePath = './img/invention_catalog/'
+  let onButton = 1;
   let shakerInventions;
 
-  for (let i = 1; i < 3; i++) {
+  for (let i = 1; i < 13; i++) {
+    let num = i < 10 ? '0' + i : i;
     $.ajax({
       type: 'GET',
-      url: 'img/invention_catalog/icon-' + i + '.svg',
+      url: 'img/invention_catalog/icon-' + num + '.svg',
       dataType: 'text',
       success: function(data) {
-        $('#icon-' + i + '-container').append(data);
+        $('#icon-' + num + '-container').append(data);
+        console.log(num);
         setUp();
       }
     });
@@ -28,60 +30,67 @@ $(document).ready(function(){
 
   function setUp() {
     files++;
-    if (files == 3) { // if all files have been processed
-      setSidebar(1);
-      for (let i = 3; i < 17; i++) {
-        $('#icon-' + i + '-container').append('<h5>' + i + '</h5>');
-      }
+    if (files == 13) { // if all files have been processed
+      setSidebar('01');
     }
   }
 
   function setSidebar(inventionId) {
-    $('#invention-image').attr('src', imagePath + shakerInventions[inventionId][5]);
-    $('#invention-image').attr('alt', imagePath + shakerInventions[inventionId][6]);
-    $('#invention-name').html(shakerInventions[inventionId][0]);
-    $('#invention-category').html(shakerInventions[inventionId][4]);
-    $('#invention-metadata').html(shakerInventions[inventionId][1] + ' | ' +
-                                  shakerInventions[inventionId][2]);
-    $('#invention-description').html(shakerInventions[inventionId][3]);
+    let num = parseInt(inventionId);
+    $('#invention-image').attr('src', 'img/invention_catalog/img_' + inventionId + '.jpg');
+    // $('#invention-image').attr('alt', imagePath + shakerInventions[inventionId][6]);
+    $('#invention-name').html(shakerInventions[num][0]);
+    $('#invention-metadata').html(shakerInventions[num][1] + ' | ' + shakerInventions[inventionId][2]);
+    $('#invention-description').html(shakerInventions[num][5]);
   }
 
   $('.icon-container').on('mouseover', function(event) {
-    let buttonId = $(this).attr('id').substring(5,6);
-    if (!$(this).hasClass('on')) {
-        $(this).find('.cls-1').css('fill', hoverColor);
-        $(this).find('.cls-3').css('stroke', hoverColor);
+    let buttonId = $(this).attr('id').substring(5,7);
+
+    if (buttonId != onButton) {
+        $(this).find('circle').css('stroke', hoverColor);
+        $('#icon-backs-' + buttonId).find('circle').css('fill', hoverColor);
+        $('#unclicked-stroke' + buttonId).css('stroke', hoverColor);
+        $('#unclicked-' + buttonId).addClass('hidden');
+        $('#clicked-' + buttonId).removeClass('hidden');
     }
   });
 
   $('.icon-container').on('mouseout', function(event) {
-    let buttonId = $(this).attr('id').substring(5,6);
-    if (!$(this).hasClass('on')) {
-        $(this).find('.cls-1').css('fill', offBlack);
-        $(this).find('.cls-3').css('stroke', offBlack);
+    let buttonId = $(this).attr('id').substring(5,7);
+    if (buttonId != onButton) {
+      $('#icon-backs-' + buttonId).find('circle').css('fill', offBlack);
+      $('#unclicked-' + buttonId).removeClass('hidden');
+      $('#clicked-' + buttonId).addClass('hidden');
+      $(this).find('circle').css('stroke', offWhite);
     }
   });
 
   $('.icon-container').on('mousedown', function(event) {
-    let buttonId = $(this).attr('id').substring(5,6);
-    if (!$(this).hasClass('on')) {
+    let buttonId = $(this).attr('id').substring(5,7);
+    if (buttonId != onButton) {
+      $('#icon-backs-' + onButton).find('circle').css('fill', offBlack);
+      $('#clicked-stroke' + onButton).css('stroke', offWhite);
+      $('#icon-' + onButton + '-container').find('circle').css('stroke', offWhite);
+      $('#unclicked-' + onButton).removeClass('hidden');
+      $('#clicked-' + onButton).addClass('hidden');
+
+      $('#icon-backs-' + buttonId).find('circle').css('fill', activeColor);
+      $('#clicked-stroke' + buttonId).css('stroke', activeColor);
+      $(this).find('circle').css('stroke', activeColor);
+
+      onButton = buttonId;
       setSidebar(buttonId);
       $('#sidebar').animate({scrollTop: 0}, 300, 'swing');
-      $('.icon-container').removeClass('on');
-      $('.icon-container').find('.cls-1').css('fill', offBlack);
-      $('.icon-container').find('.cls-3').css('stroke', offBlack);
-      $(this).addClass('on');
-      $(this).find('.cls-1').css('fill', activeColor);
-      $(this).find('.cls-3').css('stroke', activeColor);
-
     }
   });
 
   $('.icon-container').on('mouseup', function(event) {
-    let buttonId = $(this).attr('id').substring(5,6);
-    if (!$(this).hasClass('on')) {
-      $(this).find('.cls-1').css('fill', hoverColor);
-      $(this).find('.cls-3').css('stroke', hoverColor);
+    let buttonId = $(this).attr('id').substring(5,7);
+    if (buttonId != onButton) {
+      $('#icon-backs-' + buttonId).find('circle').css('fill', hoverColor);
+      $('#clicked-stroke' + buttonId).css('stroke', hoverColor);
+      $(this).find('circle').css('stroke', hoverColor);
     }
   });
 });

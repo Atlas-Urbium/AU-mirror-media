@@ -10,25 +10,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link href="../css/mirror_media.css" type="text/css" rel="stylesheet" />
-  <!--- <link href="../css/large_block.css" type="text/css" rel="stylesheet" /> --->
+  <link href="../css/large_block.css" type="text/css" rel="stylesheet" />
   <link href="./css/mount_lebanon_map.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-  <div id="jpg-container" class='image-container noselect'>
-    <img src="./img/mount_lebanon_base_map.jpg" width='100%'/>
+  <div id="jpg-container" class='image-container noselect' style='z-index: -2'>
+    <img src="./img/mount_lebanon_base_map.jpg" width='102%'/>
   </div>
-  <div id='svg-container' class='image-container noselect'>
-    <svg width="100%" height="100%">
+  <div id='svg-container' class='image-container noselect' style='z-index: 10'>
+    <svg width="102%" height="100%">
       <mask id="flashlight-mask">
         <rect id='darkness' x='0' y='0' width='100%' height='100%' fill='black' />
         <circle id='flashlight' cx='50' cy='50' r='0' fill='white' />
       </mask>
+      <image xlink:href='./img/mount_lebanon_text_layer.svg' width='100%' x='0' y='0'></image>
       <image xlink:href='./img/mount_lebanon_sub_layer.svg' width='100%' x='0' y='0' mask="url(#flashlight-mask)"></image>
+      <text class="svg-h2 aboveground-text" x='2.12%' y='5.05%' fill='#282828'>MOUNT LEBANON SHAKER VILLAGE, NY</text>
+      <text class="svg-h2 aboveground-text" x='2.12%' y='5.05%' fill='#EFEFEF' mask="url(#flashlight-mask)">MOUNT LEBANON SHAKER VILLAGE, NY</text>
       <text class="click-text underground-text hidden" x='50%' y='96%' fill='#EFEFEF'>CLICK TO SEE BUILDINGS</text>
-      <text class="click-text aboveground-text" x='50%' y='96%' fill='#282828'>CLICK OR HOVER TO SEE LAKES, RIVERS, AND PIPES</text>
-      <text class="click-text aboveground-text" x='50%' y='96%' fill='#EFEFEF' mask="url(#flashlight-mask)">CLICK OR HOVER TO SEE LAKES, RIVERS, AND PIPES</text>
+      <text class="click-text aboveground-text" x='50%' y='96%' fill='#282828'>CLICK TO SEE LAKES, RIVERS, AND PIPES</text>
+      <text class="click-text aboveground-text" x='50%' y='96%' fill='#EFEFEF' mask="url(#flashlight-mask)">CLICK TO SEE LAKES, RIVERS, AND PIPES</text>
     </svg>
   </div>
+  <!-- <div class="grid-container large-block">
+    <div id='f-header'>
+      <h2>MOUNT LEBANON SHAKER VILLAGE, NY</h2>
+      <h4>SHAKER CENTRAL MINISTRY</h4>
+    </div>
+  </div> -->
   <script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" src="../js/jquery-csv.min.js"></script>
   <script type='text/javascript' src='../js/mirror_media.js'></script>

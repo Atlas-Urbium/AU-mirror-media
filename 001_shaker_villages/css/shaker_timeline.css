@@ -43,7 +43,6 @@ html {
   scrollbar-width: none;  /* Firefox */
 }
 
-
 #play-button {
   grid-area: 9 / 8 / span 1 / span 1;
 }

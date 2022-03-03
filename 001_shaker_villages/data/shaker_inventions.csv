@@ -1,3 +1,13 @@
-name,date,attributed-to,description,class,image-name,image-alt
-Mail Order Seed Packet,1794,Mount Lebanon Shaker Village,"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",Business Venture,shaker_seeds.jpeg,Stacked boxes of Shaker seed packets
-Modern Shaker Tilting Chair,1852,George O'Donnell,Amet justo donec enim diam vulputate ut pharetra sit amet. Commodo elit at imperdiet dui accumsan sit amet. Rutrum quisque non tellus orci ac auctor augue mauris augue. Dui sapien eget mi proin sed. Consectetur adipiscing elit pellentesque habitant morbi. Eu ultrices vitae auctor eu augue ut lectus arcu. Commodo ullamcorper a lacus vestibulum sed arcu non odio euismod. Velit scelerisque in dictum non consectetur a erat. Gravida quis blandit turpis cursus in hac habitasse.,Invention,shaker_chair.jpg,A drawing of a Shaker chair
+name,date,village,attributed-to,category,description
+CORBETT'S ELECTROSTATIC MACHINE,,Canterbury,Thomas Corbett,Machine,
+CIRCULAR SAW,1813,Harvard,Tabitha Babbitt,Machine,"The spinning wheel was an early machine used to transform natural fibers into spinning thread or yarn. It was composed of a drive wheel, table, treadle and legs as well as parts that held the fibers. A weaver by trade, Babbitt noticed that the drive wheel spun in a continual circular motion and didn’t need to be continually reset like the inefficient pit saw. By carving a circular saw blade and attaching it to her spinning wheel, every movement of the disk made a cut."
+VACUUM PAN,1849,Canterbury,,Machine,
+WHEEL-DRIVEN WASHING MACHINE,1790s,Hancock,,Machine,
+IRONING STOVE,1793,Watervliet,,Tool,
+BANDAGE ROLLER,,Mount Lebanon,Isaac Newton Young,Tool,"The wooden wheels mounted on the winding shaft are adjustable. By turning a small thumbscrew the distance between the wheels can be set from zero to two inches. While this adjustment is appropriate as bandaging materials could certainly vary in width, it makes one think that it would also be an appropriate tool for winding all kinds of narrow materials – bonnet edging, carpet binding, strapping, and even short pieces of chair webbing"
+EARLY WHEELCHAIR,,,,Tool,
+MAIL ORDER SEED PACKET,1794,Mount Lebanon,,Product Line,
+TILTING CHAIR,1852,,,Product Line,The Shakers may have initially developed button joint tilts as a feature to make their chairs more saleable to the world.
+FLAT BROOM VICE,1798,Watervliet,,Production Technique,"The vise consists of two upright planks, one rigidly fixed to the base and the other hinged via a pair of short distance pieces. This can be clearly seen in the small vise on the left of the illustration ""Making Shaker brooms"". The handle of the broom can pass between the distance pieces, the length of the handle imposing a minimum size on the fixed upright. Larger vises may have the movable jaw hinged at the base and do away with the distance pieces"
+MANURE RAILROAD,,Mount Lebanon,North Family,Production Technique,
+ROUND BARN,,,,Production Technique,

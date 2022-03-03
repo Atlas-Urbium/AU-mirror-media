@@ -1,0 +1,60 @@
+.grid-container {
+  grid-template-rows: 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem;
+}
+
+body {
+  margin: 0;
+}
+
+#title {
+  grid-area: 1 / 1 / span 1 / span 5;
+}
+
+#play-button {
+  grid-area: 1 / 6 / span 1 / span 1;
+}
+
+.image-container {
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  width: 50rem;
+  height: 81.43rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.building {
+  opacity: 0;
+}
+
+.transparent {
+  opacity: 0;
+}
+
+.text-flash {
+  animation-name: flash;
+  animation-duration: 4s;
+}
+@keyframes flash {
+  0%   {opacity: 0;}
+  25%  {opacity: 1;}
+  75%  {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+#play-button-g {
+  pointer-events: bounding-box;
+  cursor: pointer;
+  height: 6rem;
+  width: 6rem;
+}
+
+#play-button-g text {
+  fill: #282828;
+  font-family: "Inter";
+  font-weight: 600;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}

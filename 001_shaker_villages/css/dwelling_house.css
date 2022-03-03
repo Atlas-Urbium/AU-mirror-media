@@ -1,0 +1,103 @@
+.grid-container {
+  grid-template-rows: 6rem 6rem 6rem 6rem 6rem 6rem;
+}
+
+#title-female {
+  grid-area: 1 / 2 / span 1 / span 4;
+}
+
+#title-female h2 {
+  /* color: #b16286; */
+  text-align: right;
+}
+
+#title-female h4 {
+  /* color: #b16286; */
+  text-align: right;
+}
+
+#title-male {
+  grid-area: 1 / 8 / span 1 / span 4;
+}
+
+#title-male {
+  /* color: #458588; */
+}
+
+#time-label {
+  grid-area: 5 / 6 / span 1 / span 2;
+}
+
+#time-label h5 {
+  text-align: center;
+  padding-top: 4.66rem;
+}
+
+#female-event-label {
+  grid-area: 6 / 2 / span 1 / span 4;
+}
+
+#female-event-label p {
+  text-align: right;
+  color: #b16286;
+  padding-top: 5.1989rem;
+}
+
+#male-event-label {
+  grid-area: 6 / 8 / span 1 / span 4;
+}
+
+#male-event-label p {
+  text-align: left;
+  color: #458588;
+  padding-top: 5.1989rem;
+}
+
+#clock {
+  grid-area: 6 / 6 / span 1 / span 2;
+}
+
+#axon {
+  grid-area: 2 / 2 / span 4 / span 10;
+}
+
+.ringing {
+  animation: ring 2s 3;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+@keyframes ring {
+  0%   { transform: scale(1,1); opacity: 1;}
+  100% { transform: scale(10,10); opacity: 0;}
+}
+
+.hidden {
+  display: none;
+}
+
+.walker-fill {
+  fill: #928374;
+}
+
+.walker-stroke {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 0.4px;
+}
+
+.walker-stroke.male {
+  stroke: #83a598;
+}
+
+.walker-stroke.female {
+  stroke: #d3869b;
+}
+
+.walking-back-left {
+  animation: walkbackleft 3s infinite;
+}
+@keyframes walkbackleft {
+  0%   { transform: translate(0, 0); opacity: 1;}
+  100% { transform: translate(17.32, 100); opacity: 0;}
+}

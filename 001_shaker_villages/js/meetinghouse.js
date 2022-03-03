@@ -103,7 +103,7 @@ $(document).ready(function(){
     let label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     label.setAttributeNS(null, 'id', 'labelText');
     label.setAttributeNS(null, 'class', 'transparent');
-    label.setAttributeNS(null, 'x', '32.5%');
+    label.setAttributeNS(null, 'x', '50%');
     label.setAttributeNS(null, 'y', '28%');
     planSvg.appendChild(label);
 

@@ -1,80 +1,78 @@
 .grid-container {
-  grid-template-rows: 6rem 6rem 6rem 6rem 6rem;
+  grid-template-rows: 2rem 6rem 6rem 6rem;
 }
 
-#icon-1-container {
-  grid-area: 1 / 1 / span 1 / span 1;
-}
-
-#icon-2-container {
-  grid-area: 1 / 2 / span 1 / span 1;
-}
-
-#icon-3-container {
-  grid-area: 1 / 3 / span 1 / span 1;
-}
-
-#icon-4-container {
+#icon-01-container {
   grid-area: 2 / 1 / span 1 / span 1;
 }
 
-#icon-5-container {
+#icon-02-container {
   grid-area: 2 / 2 / span 1 / span 1;
 }
 
-#icon-6-container {
+#icon-03-container {
   grid-area: 2 / 3 / span 1 / span 1;
 }
 
-#icon-7-container {
+#icon-04-container {
   grid-area: 3 / 1 / span 1 / span 1;
 }
 
-#icon-8-container {
+#icon-05-container {
   grid-area: 3 / 2 / span 1 / span 1;
 }
 
-#icon-9-container {
+#icon-06-container {
   grid-area: 3 / 3 / span 1 / span 1;
 }
 
-#icon-10-container {
+#icon-07-container {
   grid-area: 4 / 1 / span 1 / span 1;
 }
 
-#icon-11-container {
+#icon-08-container {
   grid-area: 4 / 2 / span 1 / span 1;
 }
 
-#icon-12-container {
+#icon-09-container {
   grid-area: 4 / 3 / span 1 / span 1;
 }
 
-#icon-13-container {
+#icon-10-container {
   grid-area: 5 / 1 / span 1 / span 1;
 }
 
-#icon-14-container {
+#icon-11-container {
   grid-area: 5 / 2 / span 1 / span 1;
 }
 
-#icon-15-container {
+#icon-12-container {
   grid-area: 5 / 3 / span 1 / span 1;
+}
+
+#header {
+  grid-area: 1 / 1 / span 1 / span 3;
 }
 
 #sidebar {
   grid-area: 1 / 4 / span 5 / span 3;
   width: 100%;
-  height: 100%;
   overflow: scroll;
 }
 
 #sidebar img {
   width: 22rem;
-  height: 14rem;
 }
 
-.icon-container svg {
-  width: 100%;
-  height: 100%;
+.button-fill {
+  fill: #efefef;
+}
+
+.button-stroke {
+  fill: none;
+  stroke: #282828;
+}
+
+.hidden {
+  display: none;
 }

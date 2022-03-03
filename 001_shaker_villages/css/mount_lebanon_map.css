@@ -1,19 +1,43 @@
-html {
-  font-size: 14.4px;
+body {
+  margin: 0;
 }
 
-@media only screen and (max-width: 550px) {
-  html {
-    font-size: 2vw;
-  }
+.svg-h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 2.07rem;
+  line-height: 2rem;
+}
+
+.grid-container {
+  grid-template-rows: 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem 6rem;
+}
+
+#b-header {
+  grid-area: 1 / 1 / span 1 / span 8;
+  z-index: -1;
+}
+
+#f-header {
+  grid-area: 1 / 1 / span 1 / span 8;
+  z-index: 11;
+}
+
+#f-header h2 {
+  color: #282828;
+}
+
+#f-header h4 {
+  color: #282828;
 }
 
 .image-container {
-  position: absolute;
-  top: 0;
   left: 0;
-  width: 100vw;
-  height: 72vw;
+  right: 0;
+  margin: auto;
+  position: absolute;
+  width: 89.5rem;
+  height: 73.5rem;
   overflow: hidden;
   cursor: pointer;
 }
