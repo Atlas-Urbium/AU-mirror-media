@@ -30,6 +30,11 @@ $(document).ready(function(){
   function setUp() {
     files++;
     if (files == 13) { // if all files have been processed
+      $('#icon-backs-01').find('circle').css('fill', activeColor);
+      $('#clicked-stroke-01').children().css('stroke', activeColor);
+      $("#icon-01-container").find('circle').css('stroke', activeColor);
+
+      onButton = '01';
       setSidebar('01');
       setSource();
     }
@@ -71,18 +76,16 @@ $(document).ready(function(){
     let buttonId = $(this).attr('id').substring(5,7);
     if (buttonId != onButton) {
       $('#icon-backs-' + onButton).find('circle').css('fill', offBlack);
-      $('#clicked-stroke' + onButton).css('stroke', offWhite);
       $('#icon-' + onButton + '-container').find('circle').css('stroke', offWhite);
       $('#unclicked-' + onButton).removeClass('hidden');
       $('#clicked-' + onButton).addClass('hidden');
 
       $('#icon-backs-' + buttonId).find('circle').css('fill', activeColor);
-      $('#clicked-stroke' + buttonId).css('stroke', activeColor);
+      $('#clicked-stroke-' + buttonId).children().css('stroke', activeColor);
       $(this).find('circle').css('stroke', activeColor);
 
       onButton = buttonId;
       setSidebar(buttonId);
-      $('#sidebar').animate({scrollTop: 0}, 300, 'swing');
     }
   });
 
@@ -90,7 +93,7 @@ $(document).ready(function(){
     let buttonId = $(this).attr('id').substring(5,7);
     if (buttonId != onButton) {
       $('#icon-backs-' + buttonId).find('circle').css('fill', hoverColor);
-      $('#clicked-stroke' + buttonId).css('stroke', hoverColor);
+      $('#clicked-stroke-' + buttonId).children().css('stroke', hoverColor);
       $(this).find('circle').css('stroke', hoverColor);
     }
   });
