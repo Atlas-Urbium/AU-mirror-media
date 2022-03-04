@@ -56,7 +56,7 @@ $(document).ready(function(){
     if (buttonId != onButton) {
         $(this).find('circle').css('stroke', hoverColor);
         $('#icon-backs-' + buttonId).find('circle').css('fill', hoverColor);
-        $('#unclicked-stroke' + buttonId).css('stroke', hoverColor);
+        $('#clicked-stroke-' + buttonId).children().css('stroke', hoverColor);
         $('#unclicked-' + buttonId).addClass('hidden');
         $('#clicked-' + buttonId).removeClass('hidden');
     }
