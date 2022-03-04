@@ -84,6 +84,15 @@ p.tiny-text {
   padding: 0.1989rem 0 0 0;
 }
 
+p.src-text {
+  font-family: "Inconsolata", monospace;
+  font-weight: 300;
+  font-size: 0.45rem;
+  line-height: 0.5rem;
+  margin: 0 0 -0.1989rem 0;
+  padding: 0.1989rem 0 0 0;
+}
+
 ol {
   font-family: "Inconsolata", monospace;
   font-weight: 300;

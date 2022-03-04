@@ -12,7 +12,6 @@ $(document).ready(function(){
       dataType: 'text',
       success: function(data) {
         $('#icon-' + num + '-container').append(data);
-        console.log(num);
         setUp();
       }
     });
@@ -32,16 +31,18 @@ $(document).ready(function(){
     files++;
     if (files == 13) { // if all files have been processed
       setSidebar('01');
+      setSource();
     }
   }
 
   function setSidebar(inventionId) {
     let num = parseInt(inventionId);
-    $('#invention-image').attr('src', 'img/invention_catalog/img_' + inventionId + '.jpg');
-    // $('#invention-image').attr('alt', imagePath + shakerInventions[inventionId][6]);
+    $('#invention-img').attr('src', 'img/invention_catalog/img_' + inventionId + '.jpg');
+    $('#invention-img').attr('alt', shakerInventions[num][5]);
     $('#invention-name').html(shakerInventions[num][0]);
-    $('#invention-metadata').html(shakerInventions[num][1] + ' | ' + shakerInventions[inventionId][2]);
-    $('#invention-description').html(shakerInventions[num][5]);
+    $('#invention-metadata').html(shakerInventions[num][3] + ' | ' + shakerInventions[num][2] + ' | ' + shakerInventions[num][1]);
+    $('#invention-description').html(shakerInventions[num][4]);
+    $('#img_source').html('SOURCE: ' + shakerInventions[num][6]);
   }
 
   $('.icon-container').on('mouseover', function(event) {
@@ -92,5 +93,13 @@ $(document).ready(function(){
       $('#clicked-stroke' + buttonId).css('stroke', hoverColor);
       $(this).find('circle').css('stroke', hoverColor);
     }
+  });
+
+  function setSource() {
+    $('#img_source').css('left', window.innerWidth/2 + remToPx(23.75));
+  }
+
+  $( window ).resize(function() {
+    setSource();
   });
 });
