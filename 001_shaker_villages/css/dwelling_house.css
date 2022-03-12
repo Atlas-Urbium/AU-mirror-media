@@ -33,21 +33,21 @@
   padding-top: 4.66rem;
 }
 
-#female-event-label {
+#female-event-label-container {
   grid-area: 6 / 2 / span 1 / span 4;
 }
 
-#female-event-label p {
+#female-event-label-container p {
   text-align: right;
   color: #b16286;
   padding-top: 5.1989rem;
 }
 
-#male-event-label {
+#male-event-label-container {
   grid-area: 6 / 8 / span 1 / span 4;
 }
 
-#male-event-label p {
+#male-event-label-container p {
   text-align: left;
   color: #458588;
   padding-top: 5.1989rem;
@@ -62,7 +62,7 @@
 }
 
 .ringing {
-  animation: ring 2s 3;
+  animation: ring 2s 2;
   transform-box: fill-box;
   transform-origin: 50% 50%;
 }

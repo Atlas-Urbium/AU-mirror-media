@@ -1,0 +1,33 @@
+hour,minute,female,male,animation
+0,0,The Shakers sleep,The Shakers sleep,exterior
+4,30,The bell rings.,The bell rings.,bellRing
+4,32,Ann rises.,John rises.,rise
+4,35,"Ann starts her day with a prayer, then begins personal ablutions and tidying her retiring room.","John starts his day with a prayer, then begins personal ablutions and tidying his retiring room.",prayer
+4,45,Ann heads to John's retiring room.,"John leaves the dwelling house, greeting the Elders stationed by the door.",transition1
+4,50,Ann makes the beds and puts the room in order.,John milks the cows.,doingStuff
+5,0,Ann heads to the bakery with her unit.,John milks the cows.,transition2
+5,5,Ann helps bake bread for the day.,John milks the cows.,baking
+5,55,Ann heads to the female dining hall.,"John enters the dwelling house, greeting the Elders stationed by the door. He heads to the male dining hall.",transition3
+6,0,Prayer.,Prayer.,dining
+6,5,Breakfast is eaten in silence.,Breakfast is eaten in silence.,dining
+6,40,Prayer.,Prayer.,dining
+6,45,"Ann leaves the dwelling house, greeting the Elders stationed by the door.","John leaves the dwelling house, greeting the Elders stationed by the door.",transition4
+7,0,"Ann and her unit work in the furniture workshop, weaving chair seats.",John and his unit work together in the fields.,exterior
+11,50,The bell rings.,The bell rings.,bellRing
+11,55,"Ann enters the dwelling house, greeting the Elders stationed by the door. She heads to the female dining hall.","John enters the dwelling house, greeting the Elders stationed by the door. He heads to the male dining hall.",transition5
+12,0,Prayer.,Prayer.,dining
+12,5,The noon meal is eaten in silence.,The noon meal is eaten in silence.,dining
+12,40,Prayer.,Prayer.,dining
+12,45,"Ann leaves the dwelling house, greeting the Elders stationed by the door.","John leaves the dwelling house, greeting the Elders stationed by the door.",transition4
+13,0,"Ann and her unit work in the seed workshop, drying, sorting, and packaging seeds.","John and his unit work in the furniture workshop, building chairs.",exterior
+17,50,The bell rings.,The bell rings.,bellRing
+17,55,"Ann enters the dwelling house, greeting the Elders stationed by the door. She heads to the female dining hall.","John enters the dwelling house, greeting the Elders stationed by the door. He heads to the male dining hall.",transition5
+18,0,Prayer.,Prayer.,dining
+18,5,The evening meal is eaten in silence.,The evening meal is eaten in silence.,dining
+19,20,Prayer.,Prayer.,dining
+19,25,Ann heads upstairs to her retiring room.,John heads upstairs to his retiring room.,transition6
+19,30,Ann begins 30 minutes of silent prayer in her room.,John begins 30 minutes of silent prayer in his room.,prayer
+19,55,"Ann heads to the meeting room, entering through the female door.","John heads to the meeting room, entering through the male door.",transition7
+20,0,Daily meeting.,Daily meeting.,meeting
+20,55,Ann heads upstairs to her retiring room.,John heads upstairs to his retiring room.,transition6
+21,0,The Shakers sleep,The Shakers sleep,sleep

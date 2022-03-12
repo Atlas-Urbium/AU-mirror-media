@@ -1,7 +1,6 @@
-let files = 0;
-
 $(document).ready(function(){
-
+    
+  let files = 0;
   // for the 2 intervals running on text and animation
   let textInterval;
   let textTime = 0;
