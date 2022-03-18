@@ -18,7 +18,7 @@ $(document).ready(function(){
   
   // for regular animations
   let currFrame = 0;
-  let animIntervals = [null, null, null, null, null, null];
+  let animIntervals = [null, null, null, null, null, null, null];
   
   // for walking animations
   let currFrames = [];
@@ -83,7 +83,7 @@ $(document).ready(function(){
       nextMinute = parseInt(events[nextIndex][1]);
     }
     let minuteDifference = (nextHour - currHour) * 60 + (nextMinute - currMinute);
-    minuteIncrement = minuteDifference/100;
+    minuteIncrement = minuteDifference/80;
     $('#female-event-label').html(events[currIndex][2]);
     $('#male-event-label').html(events[currIndex][3]);
     let prevIndex = currIndex == 1 ? events.length - 1 : currIndex - 1;
@@ -253,6 +253,7 @@ $(document).ready(function(){
       $('#' + currFloor[gender] + '-' + gender).addClass('hidden');
       $('#' + floor + '-' + gender).removeClass('hidden');
       currFloor[gender] = floor;
+      $('#axon-' + gender).find('img').attr('src', './img/animations/' + floor + '-' + gender + '.png');
     }
   }
 
@@ -384,17 +385,21 @@ $(document).ready(function(){
   function transition1() {
     setFocus('floor-1', 'm', 'hallway');
     setFocus('floor-3', 'f', 'hallway');
+    currFrame = -1;
     $('#walking-forward-right-f-container').attr('mask', 'url(#mask-floor-3-hallway)');
     $('#walking-forward-right-m-container').attr('mask', 'url(#mask-floor-1-hallway)');
     setWalkers('m', 'forward', 'right', 800, 250);
     setWalkers('f', 'forward', 'right', 215, 165);
     walkInterval = setInterval(runWalkingAnimations, 250);
+    animIntervals[6] = setInterval(runAnimation, 250, 'elder-wave-m,8,16,6');
   }
   
   function clearTransition1() {
     clearInterval(walkInterval);
+    clearInterval(animIntervals[6]);
     currFrames = [];
     walkerIds = [];
+    $('#elder-wave-m').children().addClass('hidden');
     $('.walker').children().addClass('hidden');
     clearFocus('floor-3', 'f', 'hallway');
   }
@@ -418,18 +423,22 @@ $(document).ready(function(){
   function transition3() {
     setFocus('floor-1', 'm', 'hallway');
     setFocus('floor-0', 'f', 'hallway');
+    currFrame = -1;
     $('#walking-back-right-f-container').attr('mask', 'url(#mask-floor-0-hallway)');
     $('#walking-back-left-m-container').attr('mask', 'url(#mask-floor-1-hallway)');
     setWalkers('m', 'back', 'left', 900, 310);
     setWalkers('f', 'back', 'right', 240, 310);
     walkInterval = setInterval(runWalkingAnimations, 250);
+    animIntervals[6] = setInterval(runAnimation, 250, 'elder-wave-m,8,16,6');
   }
   
   function clearTransition3() {
     clearInterval(walkInterval);
+    clearInterval(animIntervals[6]);
     currFrames = [];
     walkerIds = [];
     $('.walker').children().addClass('hidden');
+    $('#elder-wave-m').children().addClass('hidden');
     clearFocus('floor-0', 'f', 'hallway');
     clearFocus('floor-1', 'm', 'hallway');
   }
@@ -437,6 +446,7 @@ $(document).ready(function(){
   function transition4() {
     setFocus('floor-1', 'm', 'hallway');
     setFocus('floor-1', 'f', 'hallway');
+    currFrame = -1;
     $('#walking-forward-left-f-container').attr('mask', 'url(#mask-floor-1-hallway)');
     $('#walking-forward-left-m-container').attr('mask', 'url(#mask-floor-1-hallway)');
     $('#walking-forward-right-m-container').attr('mask', 'url(#mask-floor-1-hallway)');
@@ -445,16 +455,20 @@ $(document).ready(function(){
     setWalkers('f', 'forward', 'right', 860, 290);
     setWalkers('m', 'forward', 'left', 320, 240);
     setWalkers('f', 'forward', 'left', 230, 290);
-    animIntervals[5] = setInterval(runAnimation, 250, 'elder-wave-f,8,16,5');
+    $('#elder-wave-f-0').removeClass('hidden');
+    $('#elder-wave-m-0').removeClass('hidden');
     walkInterval = setInterval(runWalkingAnimations, 250);
   }
   
   function clearTransition4() {
     clearInterval(walkInterval);
     clearInterval(animIntervals[5]);
+    clearInterval(animIntervals[6]);
     currFrames = [];
     walkerIds = [];
     $('.walker').children().addClass('hidden');
+    $('#elder-wave-f').children().addClass('hidden');
+    $('#elder-wave-m').children().addClass('hidden');
     clearFocus('floor-1', 'f', 'hallway');
     clearFocus('floor-1', 'm', 'hallway');
   }
@@ -462,6 +476,7 @@ $(document).ready(function(){
   function transition5() {
     setFocus('floor-1', 'm', 'hallway');
     setFocus('floor-1', 'f', 'hallway');
+    currFrame = -1;
     $('#walking-back-left-f-container').attr('mask', 'url(#mask-floor-1-hallway)');
     $('#walking-back-right-f-container').attr('mask', 'url(#mask-floor-1-hallway)');
     $('#walking-back-left-m-container').attr('mask', 'url(#mask-floor-1-hallway)');
@@ -470,16 +485,20 @@ $(document).ready(function(){
     setWalkers('f', 'back', 'left', 880, 305);
     setWalkers('m', 'back', 'right', 114, 355);
     setWalkers('f', 'back', 'right', 200, 300);
-    animIntervals[5] = setInterval(runAnimation, 250, 'elder-wave-f,8,16,5');
+    $('#elder-wave-f-0').removeClass('hidden');
+    $('#elder-wave-m-0').removeClass('hidden');
     walkInterval = setInterval(runWalkingAnimations, 250);
   }
   
   function clearTransition5() {
     clearInterval(animIntervals[5]);
+    clearInterval(animIntervals[6]);
     clearInterval(walkInterval);
     currFrames = [];
     walkerIds = [];
     $('.walker').children().addClass('hidden');
+    $('#elder-wave-f').children().addClass('hidden');
+    $('#elder-wave-m').children().addClass('hidden');
     clearFocus('floor-1', 'm', 'hallway');
     clearFocus('floor-1', 'f', 'hallway');
   }
@@ -537,9 +556,10 @@ $(document).ready(function(){
     let animationFrames = parseInt(parsedVars[1]);
     let totalFrames = parseInt(parsedVars[2]);
     let intervalNum = -1;
-    if (parsedVars.length == 4) {
+    if (parsedVars.length >= 4) {
       intervalNum = parseInt(parsedVars[3]);
     }
+    let frame = currFrame;
     $('#' + animation + '-' + currFrame%animationFrames).addClass('hidden');
     currFrame++;
     $('#' + animation + '-' + currFrame%animationFrames).removeClass('hidden');

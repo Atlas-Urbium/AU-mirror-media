@@ -73,7 +73,8 @@ html {
 .line {
   stroke: #d65d0e;
   stroke-width: 0.05rem;
-  stroke-dasharray: 0.5rem, 0.25rem;
+  stroke-dasharray: 4px, 3px;
+/*  stroke-dasharray: 0.5rem, 0.25rem;*/
   animation: dash 5s linear forwards infinite;
   opacity: .65;
   transition: stroke-opacity 1s;
@@ -131,6 +132,6 @@ html {
 
 @keyframes dash {
   to {
-    stroke-dashoffset: -7.5rem;
+    stroke-dashoffset: 70;
   }
 }

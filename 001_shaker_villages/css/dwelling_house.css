@@ -61,6 +61,14 @@
   grid-area: 2 / 2 / span 4 / span 10;
 }
 
+#axon-m {
+  grid-area: 2 / 7 / span 4 / span 5;
+}
+
+#axon-f {
+  grid-area: 2 / 2 / span 4 / span 5;
+}
+
 .ringing {
   animation: ring 2s 2;
   transform-box: fill-box;
