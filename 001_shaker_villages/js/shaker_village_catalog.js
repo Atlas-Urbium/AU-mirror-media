@@ -78,7 +78,7 @@ $(document).ready(function(){
   function addFamilyCircles() {
     $('#familyDots').empty(); 
     // add family circles
-    for (i = 0; i < 8; i++) {
+    for (let i = 0; i < 8; i++) {
       let familyDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
       familyDot.setAttribute('class', 'dot');
       let offset = i * 0.9 + 0.45

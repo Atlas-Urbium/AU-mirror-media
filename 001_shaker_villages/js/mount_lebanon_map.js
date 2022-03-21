@@ -9,14 +9,14 @@ $(document).ready(function(){
     return x - offset;
   }
 
-  $( '#svg-container' ).on( "mouseover", function( event ) {
+  $( '#svg-container' ).on( "mouseenter", function( event ) {
     $( "#flashlight" ).attr("cx", getXCoordinate(event.pageX));
     $( "#flashlight" ).attr("cy", event.pageY);
     $( "#flashlight" ).stop();
     $( "#flashlight" ).animate({r: '11.75rem'});
   });
 
-  $( '#svg-container' ).on( "mouseout", function( event ) {
+  $( '#svg-container' ).on( "mouseleave", function( event ) {
     $( "#flashlight" ).attr("cx", getXCoordinate(event.pageX));
     $( "#flashlight" ).attr("cy", event.pageY);
     $( "#flashlight" ).stop();

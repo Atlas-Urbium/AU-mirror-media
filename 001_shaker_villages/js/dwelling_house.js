@@ -62,6 +62,15 @@ $(document).ready(function(){
     files++;
 
     if (files == 3) {
+      
+      // preloading images
+      $('<img src="img/animations/exterior-f"/>');
+      $('<img src="img/animations/exterior-m"/>');
+      for (let i = 1; i < 4; i++) {
+        $('<img src="img/animations/floor-' + i + '-f"/>');
+        $('<img src="img/animations/floor-' + i + '-m"/>');
+      }
+      
       setClockVariables();
       setInterval(runClock, 50);
     }
