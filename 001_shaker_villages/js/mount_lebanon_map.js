@@ -40,4 +40,8 @@ $(document).ready(function(){
       $
     }
   });
+  
+  $( '#svg-container' ).on( "touchstart", function( event ) {
+    $('#flashlight').remove();
+  });
 });

@@ -36,10 +36,6 @@ $(document).ready(function(){
       $("#icon-01-container").find('circle').css('stroke', activeColor);
       
       $('.icon-container').children().css('pointer-events', 'none');
-      
-      for (let i = 0; i < 12; i++) {
-        $('<img src="img/invention_catalog/img_' + i + '.jpg"/>');
-      }
 
       onButton = '01';
       setSidebar('01', true);
