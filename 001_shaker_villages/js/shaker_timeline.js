@@ -95,7 +95,7 @@ $(document).ready(function(){
     }
 
     files++;
-    if (files == 3) { // if all files have been processed
+    if (files == 6) { // if all files have been processed
       // set up cities
       mapSvg = document.getElementById('state-maps');
 
@@ -172,14 +172,16 @@ $(document).ready(function(){
   function setPlay() {
     playing = true;
     $('#sidebar-timeline').removeClass('scrollable');
-    $('#play-button').find('text').html('PAUSE');
+    $('#play-button-container').children().hide();
+    $('#pause-button').show();
     timer = setInterval(incrementDate, timeInterval);
   }
 
   function setPause() {
     clearInterval(timer);
     $('#sidebar-timeline').addClass('scrollable');
-    $('#play-button').find('text').html('PLAY');
+    $('#play-button-container').children().hide();
+    $('#play-button').show();
     setTimeout(() => {playing = false;}, timeInterval); // prevents date from going backward due to scroll transition
   }
 
@@ -187,7 +189,8 @@ $(document).ready(function(){
     playing = false;
     clearInterval(timer);
     $('#sidebar-timeline').addClass('scrollable');
-    $('#play-button').find('text').html('REPLAY');
+    $('#play-button-container').children().hide();
+    $('#replay-button').show();
     currDate = dateOffset - 1;
   }
 
@@ -224,7 +227,8 @@ $(document).ready(function(){
       if (currDate == maxDate) { // if date maxed out, button says replay
         setReplay();
       } else {
-        $('#play-button').find('text').html('PLAY');
+        $('#play-button-container').children().hide();
+        $('#play-button').show();
       }
     }
   });
@@ -260,6 +264,38 @@ $(document).ready(function(){
     dataType: 'text',
     success: function(data) {
       setUp(data, eventsFile);
+    }
+  });
+  
+  $.ajax({
+    type: 'GET',
+    url: '../img/buttons/play-button.svg',
+    dataType: 'text',
+    success: function(data) {
+      $('#play-button-container').append(data);
+      setUp();
+    }
+  });
+  
+  $.ajax({
+    type: 'GET',
+    url: '../img/buttons/pause-button.svg',
+    dataType: 'text',
+    success: function(data) {
+      $('#play-button-container').append(data);
+      $('#pause-button').hide();
+      setUp();
+    }
+  });
+  
+  $.ajax({
+    type: 'GET',
+    url: '../img/buttons/replay-button.svg',
+    dataType: 'text',
+    success: function(data) {
+      $('#play-button-container').append(data);
+      $('#replay-button').hide();
+      setUp();
     }
   });
 });

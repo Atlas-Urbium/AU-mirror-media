@@ -13,10 +13,10 @@ $(document).ready(function(){
     } else if (csvName == "bishopric_data") {
       bishoprics = $.csv.toArrays(csv);
     }
-    svg = document.getElementById('us-coast-map');
 
     files++;
-    if (files == 2) {
+    if (files == 4) {
+      svg = document.getElementById('us-coast-map');
       for (let village of villages) {
         let highlightDot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         highlightDot.setAttribute('class', 'cityHighlight');
@@ -254,6 +254,27 @@ $(document).ready(function(){
       setUpCities(data, 'bishopric_data');
     }
   });
+  // add buttons
+      
+  $.ajax({
+    type: 'GET',
+    url: '../img/buttons/next-button.svg',
+    dataType: 'text',
+    success: function(data) {
+      $('#next-button-container').append(data);
+      setUpCities();
+    }
+  });
+  
+  $.ajax({
+    type: 'GET',
+    url: '../img/buttons/prev-button.svg',
+    dataType: 'text',
+    success: function(data) {
+      $('#prev-button-container').append(data);
+      setUpCities();
+    }
+  });
 
   $('#us-coast-map-container').on('mouseover', 'svg .cityButton', function(event) {
     let villageId = parseInt($(this).attr('id'));
@@ -277,16 +298,17 @@ $(document).ready(function(){
     }
   });
 
-  $('.button-container').on('mousedown', 'svg', function(event) {
+  $('.button-container').on('mousedown', function(event) {
     let buttonId = $(this).attr('id');
+    console.log(buttonId);
     let villageId = activeVillageId;
-    if (buttonId == 'next-button') {
+    if (buttonId == 'next-button-container') {
       if (villageId < villages.length) {
         villageId++;
       } else {
         villageId = 1;
       }
-    } else if (buttonId == 'prev-button') {
+    } else if (buttonId == 'prev-button-container') {
       if (villageId > 1) {
         villageId--;
       } else {

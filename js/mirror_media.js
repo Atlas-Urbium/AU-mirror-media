@@ -124,22 +124,22 @@ function textWrap(string, lineLength) {
 // BASIC BUTTON BEHAVIOR
 
 $('.button-container').on('mouseover', 'svg', function(event) {
-  $(this).find('circle').css('stroke', hoverColor);
+  $(this).find('path').css('fill', hoverColor);
   $(this).find('text').css('fill', hoverColor);
 });
 
 $('.button-container').on('mouseout', 'svg', function(event) {
-  $(this).find('circle').css('stroke', offWhite);
+  $(this).find('path').css('fill', offWhite);
   $(this).find('text').css('fill', offWhite);
 });
 
 $('.button-container').on('mousedown', 'svg', function(event) {
-  $(this).find('circle').css('stroke', activeColor);
+  $(this).find('path').css('fill', activeColor);
   $(this).find('text').css('fill', activeColor);
 });
 
 $('.button-container').on('mouseup', 'svg', function(event) {
-  $(this).find('circle').css('stroke', hoverColor);
+  $(this).find('path').css('fill', hoverColor);
   $(this).find('text').css('fill', hoverColor);
 });
 
